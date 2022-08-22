@@ -22,6 +22,7 @@ This app allows you to create, view, update, and delete technical project postin
 * As a developer user, I want to be able to edit/update production status
 
 ## Wireframes
+![](Planning_Docs/wireframes-capstone-10.jpg)
 
 ## Entity Relationship Diagram (ERD)
 ![](Planning_Docs/dreamlancer_ERD.png)
