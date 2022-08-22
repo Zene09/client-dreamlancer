@@ -28,6 +28,7 @@ Run 'git add' and 'git commit' to save your changes.
 Run the development server with 'npm start'
 
 ## Wireframes
+![](Planning_Docs/wireframes-capstone-10.jpg)
 
 ## Entity Relationship Diagram (ERD)
 ![](Planning_Docs/dreamlancer_ERD.png)
