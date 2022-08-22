@@ -21,6 +21,12 @@ This app allows you to create, view, update, and delete technical project postin
 * As a developer user, I want to be able to accept a project/job
 * As a developer user, I want to be able to edit/update production status
 
+## Installation Instructions
+Fork and clone this repo to run this git file locally. 
+Install dependencies with 'npm install'.
+Run 'git add' and 'git commit' to save your changes.
+Run the development server with 'npm start'
+
 ## Wireframes
 ![](Planning_Docs/wireframes-capstone-10.jpg)
 
