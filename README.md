@@ -24,11 +24,12 @@ This app allows you to create, view, update, and delete technical project postin
 ## Wireframes
 
 ## Entity Relationship Diagram (ERD)
-![](/dreamlancerERD.jpeg)
+![](/dreamlancer_ERD.jpeg)
 
 ## Resources
 
 ## Collaborator Roles
-- Kyle Moreno: Back End
-- Lyndonna Munro: Front End 
+- Kyle Moreno: Back End SME
+- Lyndonna Munro: Front End SME 
 - Zene Orr: Team Manager
+- Efrain Davila: Front End Dev
