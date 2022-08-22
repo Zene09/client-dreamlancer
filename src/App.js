@@ -46,15 +46,15 @@ const App = () => {
 				<Routes>
 					<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
 					<Route
-						path='/sign-up'
+						path='sign-up/'
 						element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
 					/>
 					<Route
-						path='/sign-in'
+						path='sign-in/'
 						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
 					/>
           <Route
-            path='/sign-out'
+            path='sign-out/'
             element={
               <RequireAuth user={user}>
                 <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
@@ -62,7 +62,7 @@ const App = () => {
             }
           />
           <Route
-            path='/change-password'
+            path='change-password/'
             element={
               <RequireAuth user={user}>
                 <ChangePassword msgAlert={msgAlert} user={user} />
