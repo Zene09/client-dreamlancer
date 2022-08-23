@@ -12,6 +12,10 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import JobsIndex from './components/jobs/JobsIndex'
+import ShowJob from './components/jobs/ShowJob'
+import CreateJob from './components/jobs/CreateJob'
+import EditJob from './components/jobs/EditJob'
 
 const App = () => {
 
@@ -44,30 +48,68 @@ const App = () => {
 			<Fragment>
 				<Header user={user} />
 				<Routes>
-					<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
+					<Route 
+						path='/' element={<Home msgAlert={msgAlert} user={user} />}
+					/>
+					{/* User Routes */}
 					<Route
 						path='/sign-up'
-						element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
+						element={<SignUp msgAlert={msgAlert} setUser={setUser}/>}
 					/>
 					<Route
 						path='/sign-in'
-						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
+						element={<SignIn msgAlert={msgAlert} setUser={setUser}/>}
 					/>
-          <Route
-            path='/sign-out'
-            element={
-              <RequireAuth user={user}>
-                <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path='/change-password'
-            element={
-              <RequireAuth user={user}>
-                <ChangePassword msgAlert={msgAlert} user={user} />
-              </RequireAuth>}
-          />
+					<Route
+						path='/sign-out'
+						element={
+							<RequireAuth user={user}>
+								<SignOut 
+									msgAlert={msgAlert} clearUser={clearUser} user={user} />
+							</RequireAuth>
+						}
+					/>
+					<Route
+						path='/change-password'
+						element={
+						<RequireAuth user={user}>
+							<ChangePassword msgAlert={msgAlert} user={user} />
+						</RequireAuth>}
+					/>
+					{/* Job Routes */}
+					<Route
+						path="/jobs"
+						element={ 
+							<JobsIndex 
+								user={ user } 
+								msgAlert={ msgAlert } 
+							/>
+						}
+					/>
+					<Route
+						path="/jobs/:id"
+						element={ 
+							<ShowJob  
+								msgAlert={ msgAlert } user={user} 
+							/>
+						}
+				/>
+				<Route
+					path="/addJob"
+					element={
+						<RequireAuth user={ user }>
+							<CreateJob user={user} />
+						</RequireAuth>
+					}
+				/>
+				<Route
+					path="/jobs/:id/edit"
+					element={
+						<RequireAuth user={ user }>
+							<EditJob msgAlert={ msgAlert } user={ user } />
+						</RequireAuth>
+					}
+				/>
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
