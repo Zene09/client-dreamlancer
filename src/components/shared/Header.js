@@ -21,7 +21,7 @@ const authenticatedOptions = (
 	</>
 )
 
-const devOptions = (
+const clientOptions = (
 	<Nav.Item className='m-2'>
 			<Link to="/addJob" style={ linkStyle }>
 				Add a Job!
@@ -68,12 +68,12 @@ const Header = ({ user }) => (
 	   <Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
 				{user && (
-					<span className='navbar-text mr-2'>Welcome, {user.email}</span>
+					<span className='navbar-text mr-2'>Welcome, {user.token}</span>
 				)}
 				{alwaysOptions}
 				{/* Change to know if user a DEV */}
-				{user && user.email == 'a@a.com' ?
-					devOptions :
+				{user && user.is_dev === false ?
+					clientOptions :
 					nothing}
 				{user ? 
 				  authenticatedOptions : unauthenticatedOptions}
