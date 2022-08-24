@@ -17,33 +17,33 @@ const JobsIndex = (props) => {
 
      const [error, setError] = useState(false)
 
-    const { msgAlert } = props
+    const { user, msgAlert } = props
     console.log('Props in JobsIndex', props)
 
-     // useEffect(() => { 
-     //      console.log(props)
-     //      getAllJobs()
-     //           .then(res => {
-     //                setJobs(res.data.jobs)
-     //           })
-     //           .catch(err => {
-     //                msgAlert({
-     //                    heading: 'Error Getting Jobs',
-     //                    message: messages.getJobsFailure,
-     //                    variant: 'danger',
-     //                })
-     //                setError(true)
-     //            })
-     // },[])
+     useEffect(() => { 
+          console.log(props)
+          getAllJobs(user)
+               .then(res => {
+                    setJobs(res.data.contracts)
+               })
+               .catch(err => {
+                    msgAlert({
+                        heading: 'Error Getting Jobs',
+                        message: messages.getJobsFailure,
+                        variant: 'danger',
+                    })
+                    setError(true)
+                })
+     },[])
 
      if (error) {
           return <p>Error!</p>
       }
 
      if (!jobs){
-          return <p>Loading... <LoadingScreen/></p>
+          return <p>Wating for the virtual mail man <LoadingScreen/></p>
      } else if (jobs.length === 0) {
-          return <p>No jobs yet. Better add some.</p>
+          return <p>No jobs yet.</p>
      }
 
      const jobCards = jobs.map((job) => (
@@ -51,7 +51,7 @@ const JobsIndex = (props) => {
             <Card.Header>{ job.title }</Card.Header>
             <Card.Body>
                 <Card.Text>
-                    <Link to={`/jobs/${job._id}`}>From { job.body }</Link>
+                    <Link to={`/jobs/${job._id}`}>From { job.Description }</Link>
                 </Card.Text>
             </Card.Body>
         </Card>

@@ -2,8 +2,15 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 // import Redirect from './../components/shared/Redirect'
 
-export const getAllJobs = () => {
-    return axios(`${apiUrl}/jobs/`)
+export const getAllJobs = (user) => {
+    // return axios(`${apiUrl}/jobs/`)
+    return axios({
+        method: 'GET',
+        url: `${apiUrl}contracts/`,
+        headers: {
+			Authorization: `Token ${user.token}`,
+		},
+    })
 }
 
 export const getOneJob = (id) => {
