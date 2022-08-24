@@ -13,9 +13,9 @@ const JobForm = (props) => {
                   id="title"
                   onChange={props.handleChange}
               />
-              <Form.Label htmlFor="body">Discription</Form.Label>
+              <Form.Label htmlFor="body">Description</Form.Label>
               <Form.Control
-                  placeholder="Where is this job about?"
+                  placeholder="Describe what the job entails"
                   value={job.body}
                   name="body"
                   id="body"
@@ -23,7 +23,7 @@ const JobForm = (props) => {
               />
               <Form.Label htmlFor="tags">Tags</Form.Label>
               <Form.Control
-                  placeholder="What are your tags/notes on this job?"
+                  placeholder="Enter what skills this job requires"
                   value={job.tags}
                   type="string"
                   name="tags"
