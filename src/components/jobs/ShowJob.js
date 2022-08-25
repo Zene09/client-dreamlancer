@@ -2,16 +2,20 @@ import { useState, useEffect,  } from 'react'
 import { destroyOneJob } from './../../api/jobs'
 import { useParams, Link, useNavigate } from 'react-router-dom' 
  import LoadingScreen from '../shared/LoadingScreen'
- import { getOneJob } from '../../api/jobs'
+ import { getOneJob, editOneJob } from '../../api/jobs'
  import messages from '../shared/AutoDismissAlert/messages'
  import { Container, Card } from 'react-bootstrap'
 
+ import EditJobModal from './EditJobModal'
+
 const ShowJob = (props) => {
-    
     const [job, setJob] = useState(null)
     const { user, msgAlert } = props
     const { id } = useParams()
     
+    const [updated, setUpdated] = useState(false)
+    const [editModalShow, setEditModalShow] = useState(false)
+
     const navigate = useNavigate()
     
     useEffect(() => {
@@ -25,7 +29,7 @@ const ShowJob = (props) => {
                })
                navigate('/')
            })
-    }, [])
+    }, [updated])
 
     const deleteThis = () => {
         console.log('id: ',id)
@@ -58,9 +62,21 @@ const ShowJob = (props) => {
 
             <button onClick={deleteThis}>Delete Job</button>
             
-            <Link to={`/jobs/${id}/edit`}>
-                <button>Edit Job</button>
-            </Link>
+            <button onClick={() => setEditModalShow(true)} 
+                        className="m-2" 
+                        variant="warning"
+                    >Edit The Job
+                </button>
+
+            <EditJobModal 
+                user={user}
+                job={job} 
+                show={editModalShow} 
+                editOneJob={editOneJob}
+                msgAlert={msgAlert}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                handleClose={() => setEditModalShow(false)} 
+            />
             
         </Container>
     )
