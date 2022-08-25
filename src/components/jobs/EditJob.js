@@ -15,7 +15,7 @@ const EditJob = (props) => {
      useEffect(() => {
           getOneJob(id)
               .then(res => {setJob(res.data.job)})
-              .then(res => console.log('sstarted fect job ', job))
+              .then(res => console.log('started fecth job ', job))
               .catch(err => {
                  msgAlert({
                      heading: 'Error getting job',
