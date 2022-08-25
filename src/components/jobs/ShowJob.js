@@ -9,15 +9,14 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 const ShowJob = (props) => {
     
     const [job, setJob] = useState(null)
-
+    const { user, msgAlert } = props
     const { id } = useParams()
+    
     const navigate = useNavigate()
-
-    const { msgAlert } = props
-
+    
     useEffect(() => {
-        getOneJob(id)
-            .then(res => setJob(res.data.job))
+        getOneJob(user, id)
+            .then(res => setJob(res.data.contract))
             .catch(err => {                   
                msgAlert({
                    heading: 'Error getting job',
@@ -42,18 +41,17 @@ const ShowJob = (props) => {
     if (!job) {
         return <LoadingScreen />
     }
-    console.log('HIIII, ', job)
     return (
         <Container className="fluid">
             <Card>
-                <Card.Header>{ job.name }</Card.Header>
+                <Card.Header>{ job.title }</Card.Header>
                 <Card.Body>
                     <Card.Text>
-                        <div><small>This job was from: { job.from }</small></div>
-                        <div><small>User's thoughts on the job was: { job.thoughts }</small></div>
-                        <div><small>
-                            User has eaten this job? { job.haveEaten ? 'yes' : 'no'}
-                        </small></div>
+                        <div><small>Description: { job.description }</small></div>
+                        <div><small>Deadline: { job.deadline }</small></div>
+                        <div><small>Job Type: { job.jobtype }</small></div>
+                        <div><small>Price: { job.price }</small></div>
+                        <div><small>Tags: { job.tags }</small></div>
                     </Card.Text>
                 </Card.Body>
             </Card>
