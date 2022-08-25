@@ -7,17 +7,18 @@ const CreateJob = (props) => {
      const navigate = useNavigate()
 
      const [job, setJob] = useState({
-          name: '',
-          from: '',
-          thoughts: '',
-          haveEaten: false
+          title: '',
+          description: '',
+          deadline: '',
+          jobtype: '',
+          price: '',
+          tags: ''
      })
 
      const handleChange = (e) => {
           setJob(prevJob => {
                const updatedName = e.target.name
                let updatedValue = e.target.value
-               const updatedChecked = e.target.checked
                console.log(`${updatedName}: ${updatedValue}`)
                
                const updatedJob = {
@@ -34,7 +35,7 @@ const CreateJob = (props) => {
           e.preventDefault()
           createOneJob(job, props.user)
           .then((res) => {
-               navigate(`/jobs/${res.data.job._id}`)
+               navigate(`/jobs/${res.data.contract.id}`, {replace: true})
           })
           .catch((error)=>{
             console.log(error)})
