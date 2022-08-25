@@ -13,17 +13,25 @@ export const getAllJobs = (user) => {
     })
 }
 
-export const getOneJob = (id) => {
-    return axios(`${apiUrl}/jobs/${id}/`)
+export const getOneJob = (user, id) => {
+    // return axios(`${apiUrl}contracts/${id}/`)
+    return axios({
+      method: 'GET',
+      url: `${apiUrl}contracts/${id}`,
+      headers: {
+        Authorization: `Token ${user.token}`,
+  },
+  })
 }
 
 export const createOneJob = (job, user) => {
     
+    console.table(job)
     console.log('API createOneJob user.token=',user.token)
     return axios({
       method: 'POST',
-      url: `${apiUrl}/jobs/`,
-      data: { job: job },
+      url: `${apiUrl}contracts/`,
+      data: { contract: job },
       headers: { Authorization: `Token ${user.token}` }
     })
   }

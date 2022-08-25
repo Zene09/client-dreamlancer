@@ -89,8 +89,9 @@ const App = () => {
 					<Route
 						path="/jobs/:id"
 						element={ 
-							<ShowJob  
-								msgAlert={ msgAlert } user={user} 
+							<ShowJob
+								user={ user } 
+								msgAlert={ msgAlert } 
 							/>
 						}
 				/>
