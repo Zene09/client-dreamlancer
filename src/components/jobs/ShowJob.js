@@ -13,12 +13,9 @@ const ShowJob = (props) => {
     const { user, msgAlert } = props
     const { id } = useParams()
     
-<<<<<<< HEAD
-=======
     const [updated, setUpdated] = useState(false)
     const [editModalShow, setEditModalShow] = useState(false)
 
->>>>>>> main
     const navigate = useNavigate()
     
     useEffect(() => {
