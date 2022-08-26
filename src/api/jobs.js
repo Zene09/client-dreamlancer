@@ -6,7 +6,7 @@ export const getAllJobs = (user) => {
     // return axios(`${apiUrl}/jobs/`)
     return axios({
         method: 'GET',
-        url: `${apiUrl}/contracts/`,
+        url: `${apiUrl}contracts/`,
         headers: {
 			Authorization: `Token ${user.token}`,
 		},
@@ -17,7 +17,7 @@ export const getOneJob = (user, id) => {
     // return axios(`${apiUrl}contracts/${id}/`)
     return axios({
       method: 'GET',
-      url: `${apiUrl}/contracts/${id}`,
+      url: `${apiUrl}contracts/${id}`,
       headers: {
         Authorization: `Token ${user.token}`,
   },
