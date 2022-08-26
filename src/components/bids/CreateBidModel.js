@@ -12,7 +12,7 @@ const CreateBidModel = (props) => {
      const [bid, setBid] = useState({
           description: '',
           bid_amount: '',
-          title: '',
+          title: 'hi',
           contract_ref: job.id
      })
 

@@ -76,7 +76,7 @@ const Header = ({ user }) => (
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
 				{user && (
-					<span className='navbar-text mr-2'>Welcome, {user.name}</span>
+					<span className='navbar-text mr-2'>Welcome, {user.token}</span>
 				)}
 				{alwaysOptions}
 				{user && user.is_dev === true ?
