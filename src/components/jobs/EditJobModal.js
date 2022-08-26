@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import { updateJobSuccess, updateJobFailure } from '../shared/AutoDismissAlert/messages'
-// import { editOneJob } from '../../api/jobs'
 
 // componets
 import JobForm from '../shared/JobForm'
