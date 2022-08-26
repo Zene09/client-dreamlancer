@@ -30,7 +30,7 @@ export const createOneJob = (job, user) => {
     console.log('API createOneJob user.token=',user.token)
     return axios({
       method: 'POST',
-      url: `${apiUrl}contracts/`,
+      url: `${apiUrl}/contracts/`,
       data: { contract: job },
       headers: { Authorization: `Token ${user.token}` }
     })
@@ -42,7 +42,7 @@ export const destroyOneJob = (id, user) => {
     console.log('destroyOneJob user is ', user)
     return axios({
         method: 'delete',
-        url: `${apiUrl}/jobs/${id}/`,
+        url: `${apiUrl}/contracts/${id}/`,
         headers: { Authorization: `Token ${user.token}` }
     })
 }
@@ -50,8 +50,8 @@ export const destroyOneJob = (id, user) => {
 export const editOneJob = (job, user) => {
     return axios({
         method: 'PATCH',
-        url: `${apiUrl}/jobs/${job._id}/`,
-        data: { job: job },
+        url: `${apiUrl}/contracts/${job.id}/`,
+        data: { contract: job },
         headers: { Authorization: `Token ${user.token}` }
       })
 }

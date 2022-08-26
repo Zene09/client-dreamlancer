@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import LoadingScreen from '../shared/LoadingScreen'
 import {getAllJobs} from '../../api/jobs'
 import Card from 'react-bootstrap/Card'
-import { Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import messages from '../shared/AutoDismissAlert/messages'
 
 // style for our card container
@@ -13,6 +13,7 @@ const cardContainerStyle = {
  }
 
 const JobsIndex = (props) => {
+     const navigate = useNavigate()
      const [jobs, setJobs] = useState(null)
 
      const [error, setError] = useState(false)
@@ -21,7 +22,7 @@ const JobsIndex = (props) => {
     console.log('Props in JobsIndex', props)
 
      useEffect(() => { 
-          console.log(props)
+          if (!user){return navigate('/sign-in')}
           getAllJobs(user)
                .then(res => {
                     setJobs(res.data.contracts)
@@ -39,7 +40,6 @@ const JobsIndex = (props) => {
      if (error) {
           return <p>Error!</p>
       }
-
      if (!jobs){
           return <p>Wating for the virtual mail man <LoadingScreen/></p>
      } else if (jobs.length === 0) {

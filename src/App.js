@@ -15,7 +15,7 @@ import ChangePassword from './components/auth/ChangePassword'
 import JobsIndex from './components/jobs/JobsIndex'
 import ShowJob from './components/jobs/ShowJob'
 import CreateJob from './components/jobs/CreateJob'
-import EditJob from './components/jobs/EditJob'
+// import EditJob from './components/jobs/EditJob'
 
 const App = () => {
 
@@ -103,14 +103,14 @@ const App = () => {
 						</RequireAuth>
 					}
 				/>
-				<Route
+				{/* <Route
 					path="/jobs/:id/edit"
 					element={
 						<RequireAuth user={ user }>
 							<EditJob msgAlert={ msgAlert } user={ user } />
 						</RequireAuth>
 					}
-				/>
+				/> */}
 				{/* These can be for developer user types, pending on how we would like to create them */}
 		  		<Route
 					path='sign-in/'
