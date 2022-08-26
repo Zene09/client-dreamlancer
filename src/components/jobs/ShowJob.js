@@ -57,6 +57,7 @@ const ShowJob = (props) => {
             </Card>
 
             <button onClick={deleteThis}>Delete Job</button>
+            <button onClick={}>Bid on job</button>
             
             <Link to={`/jobs/${id}/edit`}>
                 <button>Edit Job</button>

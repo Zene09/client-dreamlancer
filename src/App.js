@@ -102,7 +102,15 @@ const App = () => {
 							<CreateJob user={user} />
 						</RequireAuth>
 					}
-				/>
+					/>
+					<Route
+						path="/myBets"
+						element={
+							<RequireAuth user={user}>
+								<CreateJob user={user} />
+							</RequireAuth>
+						}
+					/>
 				<Route
 					path="/jobs/:id/edit"
 					element={

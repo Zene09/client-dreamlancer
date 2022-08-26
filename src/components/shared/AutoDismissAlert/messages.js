@@ -15,6 +15,14 @@ const messages = {
 	updateJobFailure: 'Couldn\'t update job, please try again.',
 	removeJobSuccess: 'Job has been destroyed!',
 	removeJobFailure: 'Couldn\'t remove job, please try again.',
+	//Bids
+	getBidsFailure: 'Error fetching Bids.',
+	createBidSuccess: 'Bid created Successfully!',
+	createBidFailure: 'Something went wrong, please try again.',
+	updateBidSuccess: 'Bid updated Successfully!',
+	updateBidFailure: 'Couldn\'t update Bid, please try again.',
+	removeBidSuccess: 'Bid has been destroyed!',
+	removeBidFailure: 'Couldn\'t remove Bid, please try again.',
 }
 
 module.exports = messages
