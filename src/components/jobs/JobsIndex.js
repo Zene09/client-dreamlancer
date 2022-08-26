@@ -48,10 +48,12 @@ const JobsIndex = (props) => {
 
      const jobCards = jobs.map((job) => (
           <Card style={{ width: '30%', margin: 5}} key={ job._id }>
-            <Card.Header>{ job.title }</Card.Header>
+            <Card.Header>{ job.title } - { job.owner }</Card.Header>
             <Card.Body>
                 <Card.Text>
-                    <Link to={`/jobs/${job.id}`}>From { job.description }</Link>
+                    <Link to={`/jobs/${job.id}`}>
+                         { job.description }
+                    </Link>
                 </Card.Text>
             </Card.Body>
         </Card>

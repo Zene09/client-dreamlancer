@@ -7,6 +7,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
  import { Container, Card } from 'react-bootstrap'
 
  import EditJobModal from './EditJobModal'
+ import BidIndexModel from '../bids/BidIndexModel'
 
 const ShowJob = (props) => {
     const [job, setJob] = useState(null)
@@ -15,6 +16,7 @@ const ShowJob = (props) => {
     
     const [updated, setUpdated] = useState(false)
     const [editModalShow, setEditModalShow] = useState(false)
+    const [bidModalShow, setBidModalShow] = useState(false)
 
     const navigate = useNavigate()
     
@@ -51,6 +53,7 @@ const ShowJob = (props) => {
                 <Card.Header>{ job.title }</Card.Header>
                 <Card.Body>
                     <Card.Text>
+                        <div><small>Owner ID: { job.owner }</small></div>
                         <div><small>Description: { job.description }</small></div>
                         <div><small>Deadline: { job.deadline }</small></div>
                         <div><small>Job Type: { job.jobtype }</small></div>
@@ -60,13 +63,26 @@ const ShowJob = (props) => {
                 </Card.Body>
             </Card>
 
-            <button onClick={deleteThis}>Delete Job</button>
+            {job.owner === user.id
+                ?
+                <>
+                    <button onClick={deleteThis}>Delete Job</button>
             
-            <button onClick={() => setEditModalShow(true)} 
+                    <button 
+                        onClick={() => setEditModalShow(true)} 
                         className="m-2" 
                         variant="warning"
                     >Edit The Job
+                    </button>
+                </>
+                :
+                null}
+
+                {user.is_dev === true ?
+                <button onClick={()=> setBidModalShow(true)}>
+                    Make A Bid For This Job
                 </button>
+                : null}
 
             <EditJobModal 
                 user={user}
@@ -77,6 +93,16 @@ const ShowJob = (props) => {
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 handleClose={() => setEditModalShow(false)} 
             />
+            <BidIndexModel 
+                user={user} 
+                job={job} 
+                msgAlert={msgAlert}
+                show={bidModalShow} 
+                handleClose={() => setBidModalShow(false)} 
+            />
+            {/* ContractId = models.CharField(max_length=100) 
+  description = models.TextField(max_length=500)
+  bid_amount = models.CharField(max_length=20) */}
             
         </Container>
     )
