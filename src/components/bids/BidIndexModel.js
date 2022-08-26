@@ -26,7 +26,11 @@ const BidIndexModel = (props) => {
           if (!user){return navigate('/sign-in')}
           getAllBids(user, job)
                .then(res => {
-                    setBids(res.data.bids)
+                    // if (res.data.bids.contract_ref == job.id)
+                    // console.log('HIHIHI',res.data.bids)
+                    const conBids = res.data.bids.filter(bid=>(bid.contract_ref == job.id))
+                    console.log(conBids)
+                    setBids(conBids)
                })
                .catch(err => {
                     msgAlert({
@@ -49,10 +53,11 @@ const BidIndexModel = (props) => {
 
      const bidCards = bids.map((bid) => (
           <Card style={{ width: '30%', margin: 5}} key={ bid._id }>
-            <Card.Header>{ bid.bid_amount } - { bid.owner }</Card.Header>
+            <Card.Header>${ bid.bid_amount } - Owner: { bid.owner }</Card.Header>
             <Card.Body>
                 <Card.Text>
-                         { bid.description }
+                         { bid.description } <br />
+                         contract Id: { bid.contract_ref}
                 </Card.Text>
             </Card.Body>
         </Card>

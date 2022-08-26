@@ -12,8 +12,8 @@ const CreateBidModel = (props) => {
      const [bid, setBid] = useState({
           description: '',
           bid_amount: '',
-          title: '',
-          ContractId: job.id
+          title: 'hi',
+          contract_ref: job.id
      })
 
      const handleChange = (e) => {
