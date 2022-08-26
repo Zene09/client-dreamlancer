@@ -29,6 +29,13 @@ const clientOptions = (
 		</Link>
 	</Nav.Item>
 )
+const devOptions = (
+	<Nav.Item className='m-2'>
+		<Link to="/bets" style={linkStyle}>
+			My Bids
+		</Link>
+	</Nav.Item>
+)
 
 const unauthenticatedOptions = (
 	<>
@@ -72,7 +79,9 @@ const Header = ({ user }) => (
 					<span className='navbar-text mr-2'>Welcome, {user.name}</span>
 				)}
 				{alwaysOptions}
-				{/* Change to know if user a DEV */}
+				{user && user.is_dev === true ?
+					devOptions :
+					nothing}
 				{user && user.is_dev === false ?
 					clientOptions :
 					nothing}

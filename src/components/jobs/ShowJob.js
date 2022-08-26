@@ -64,6 +64,7 @@ const ShowJob = (props) => {
             </Card>
 
             <button onClick={deleteThis}>Delete Job</button>
+            <button onClick={}>Bid on job</button>
             
             <button onClick={() => setEditModalShow(true)} 
                         className="m-2" 
