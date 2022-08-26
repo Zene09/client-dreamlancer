@@ -57,10 +57,10 @@ export const editOneBid = (bid, user) => {
         headers: { Authorization: `Token ${user.token}` }
       })
 }
-    return axios({
-        method: 'GET',
-        url: `${apiUrl}/bids/${id}`,
-        headers: {
-            Authorization: `Token ${user.token}`,
-        },
-    })
+    // return axios({
+    //     method: 'GET',
+    //     url: `${apiUrl}/bids/${id}`,
+    //     headers: {
+    //         Authorization: `Token ${user.token}`,
+    //     },
+    // })

@@ -44,7 +44,7 @@ const BidIndexModel = (props) => {
      if (!bids){
           return <p>Wating for the virtual mail man <LoadingScreen/></p>
      } else if (bids.length === 0) {
-          return <p>No bids yet. Maybe you should add some.</p>
+          return <p>No bids yet.</p>
      }
 
      const bidCards = bids.map((bid) => (
