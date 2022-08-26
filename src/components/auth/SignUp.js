@@ -85,7 +85,7 @@ const SignUp = (props) => {
                         />
                     </Form.Group>
                     <Form.Group controlId='password'>
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label>Password (5 letters min.)</Form.Label>
                         <Form.Control
                             required
                             name='password'

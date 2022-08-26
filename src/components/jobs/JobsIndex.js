@@ -54,6 +54,7 @@ const JobsIndex = (props) => {
                     <Link to={`/jobs/${job.id}`}>
                          { job.description }
                     </Link>
+                    {/* <Link to={`/jobs/${job.id}`}>From { job.owner }</Link> */}
                 </Card.Text>
             </Card.Body>
         </Card>

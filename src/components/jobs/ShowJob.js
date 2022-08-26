@@ -1,13 +1,13 @@
 import { useState, useEffect,  } from 'react'
 import { destroyOneJob } from './../../api/jobs'
 import { useParams, Link, useNavigate } from 'react-router-dom' 
- import LoadingScreen from '../shared/LoadingScreen'
- import { getOneJob, editOneJob } from '../../api/jobs'
- import messages from '../shared/AutoDismissAlert/messages'
- import { Container, Card } from 'react-bootstrap'
+import LoadingScreen from '../shared/LoadingScreen'
+import { getOneJob, editOneJob } from '../../api/jobs'
+import messages from '../shared/AutoDismissAlert/messages'
+import { Container, Card } from 'react-bootstrap'
 
- import EditJobModal from './EditJobModal'
- import BidIndexModel from '../bids/BidIndexModel'
+import EditJobModal from './EditJobModal'
+import BidIndexModel from '../bids/BidIndexModel'
 
 const ShowJob = (props) => {
     const [job, setJob] = useState(null)
@@ -66,7 +66,8 @@ const ShowJob = (props) => {
             {job.owner === user.id
                 ?
                 <>
-                    <button onClick={deleteThis}>Delete Job</button>
+            <button onClick={deleteThis}>Delete Job</button>
+            {/* <button onClick={}>Bid on job</button> */}
             
                     <button 
                         onClick={() => setEditModalShow(true)} 
