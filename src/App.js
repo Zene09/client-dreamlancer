@@ -70,7 +70,7 @@ const App = () => {
 						}
 					/>
 					<Route
-						path='/change-password'
+						path='/change-pw'
 						element={
 						<RequireAuth user={user}>
 							<ChangePassword msgAlert={msgAlert} user={user} />
