@@ -58,7 +58,8 @@ const BidIndexModel = (props) => {
             <Card.Body>
                 <Card.Text>
                          { bid.description } <br />
-                         contract Id: { bid.contract_ref}
+                         contract Id: {bid.contract_ref}
+                         <button>Accept?</button>
                 </Card.Text>
             </Card.Body>
         </Card>
