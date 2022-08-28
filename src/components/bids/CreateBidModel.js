@@ -5,9 +5,9 @@ import BidForm from '../shared/BidForm'
 
 const CreateBidModel = (props) => {
      const navigate = useNavigate()
-     const { 
-          user, job, show, handleClose, msgAlert
-      } = props
+     const {
+          user, job, show, handleClose, msgAlert, triggerRefresh
+     } = props
 
      const [bid, setBid] = useState({
           description: '',
@@ -21,7 +21,7 @@ const CreateBidModel = (props) => {
                const updatedName = e.target.name
                let updatedValue = e.target.value
                console.log(`${updatedName}: ${updatedValue}`)
-               
+
                const updatedBid = {
                     [updatedName]: updatedValue
                }
@@ -30,19 +30,27 @@ const CreateBidModel = (props) => {
                     ...updatedBid
                }
           })
-    }
+     }
 
      const handleSubmit = (e) => {
           e.preventDefault()
           createOneBid(bid, props.user)
-          .then((res) => {
-               // navigate(`/bids/${res.data.bid.id}`, {replace: true})
-          })
-          .catch((error)=>{
-            console.log(error)})
+               .then(() => triggerRefresh())
+               .then(() => handleClose())
+               .then(() => {
+                    msgAlert({
+                         heading: 'Oh Yeah!',
+                         message: 'Bid added',
+                         variant: 'success'
+                    })
+               })
+
+               .catch((err) =>
+                    console.log(err)
+               )
      }
 
-    return <BidForm bid={ bid } handleChange={ handleChange } handleSubmit={ handleSubmit } />
+     return <BidForm triggerRefresh={triggerRefresh} show={show} bid={bid} handleChange={handleChange} handleSubmit={handleSubmit} />
 }
 
 export default CreateBidModel

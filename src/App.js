@@ -103,27 +103,7 @@ const App = () => {
 						</RequireAuth>
 					}
 				/>
-				{/* <Route
-=======
-					/>
-					<Route
-						path="/myBets"
-						element={
-							<RequireAuth user={user}>
-								<CreateJob user={user} />
-							</RequireAuth>
-						}
-					/>
-				<Route
->>>>>>> 09254643a64bbc8cd1ca578584ca0bcbf9e050cb
-					path="/jobs/:id/edit"
-					element={
-						<RequireAuth user={ user }>
-							<EditJob msgAlert={ msgAlert } user={ user } />
-						</RequireAuth>
-					}
-				/> */}
-				{/* These can be for developer user types, pending on how we would like to create them */}
+				
 		  		<Route
 					path='sign-in/'
 					element={<SignIn msgAlert={msgAlert} setUser={setUser} />}

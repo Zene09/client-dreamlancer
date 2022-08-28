@@ -13,6 +13,12 @@ const cardContainerStyle = {
      justifyContent: 'left'
  }
 
+ // View all jobs Buttons
+const viewBidsStyle = {
+     display: 'flex',
+     justifyContent: 'right'
+}
+ 
 const JobsIndex = (props) => {
      const navigate = useNavigate()
      const [jobs, setJobs] = useState(null)
@@ -57,11 +63,10 @@ const JobsIndex = (props) => {
                          { job.description }
                     </Link>
                     <br />
-                    <button onClick={() => {
+                    <button style={viewBidsStyle} onClick={() => {
                          setBidModalShow(true)
                          setClickedJob(job)     
                     }}>How Current Bids</button>
-                    {/* <Link to={`/jobs/${job.id}`}>From { job.owner }</Link> */}
                 </Card.Text>
             </Card.Body>
         </Card>

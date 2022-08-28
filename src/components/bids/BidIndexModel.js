@@ -18,9 +18,11 @@ const BidIndexModel = (props) => {
      const navigate = useNavigate()
      const [bids, setBids] = useState(null)
      const [createModalShow, setCreateModalShow] = useState(false)
+     const [updated, setUpdated] = useState(false)
      const [error, setError] = useState(false)
-    const { user, job, msgAlert, show, handleClose, addBidForm } = props
-    console.log('Props in BidsIndexModel', props)
+
+     const { user, job, msgAlert, show, handleClose, addBidForm } = props
+     console.log('Props in BidsIndexModel', props)
 
      useEffect(() => { 
           if (!user){return navigate('/sign-in')}
@@ -39,7 +41,7 @@ const BidIndexModel = (props) => {
                     })
                     setError(true)
                 })
-     },[show])
+     },[show, updated])
 
      if (error) {
           return <p>Error!</p>
@@ -54,9 +56,10 @@ const BidIndexModel = (props) => {
           <Card style={{ width: '30%', margin: 5}} key={ bid._id }>
             <Card.Header>${ bid.bid_amount } - Owner: { bid.owner }</Card.Header>
             <Card.Body>
-                <Card.Text> 
-                         { bid.description } <br /> 
-                         contract Id: { bid.contract_ref}
+                <Card.Text>
+                         { bid.description } <br />
+                         contract Id: {bid.contract_ref}
+                         <button>Accept?</button>
                 </Card.Text>
             </Card.Body>
         </Card>
@@ -69,15 +72,15 @@ const BidIndexModel = (props) => {
                     <div style={ cardContainerStyle }>
                          { bidCards }
                     </div>
-                    {/* <button onClick={setCreateModalShow(true)}>Add A Bid! You Might Win!</button> */}
                     {addBidForm === true ?
                          <>
                               <h5>Add A Bid! You Might Win!</h5>
                               <CreateBidModel 
-                                   user={user} 
+                                   user={user}
                                    job={job} 
                                    msgAlert={msgAlert}
                                    show={createModalShow}
+                                   triggerRefresh={() => setUpdated(prev => !prev)}
                                    handleClose={() => setCreateModalShow(false)}
                               />
                          </>

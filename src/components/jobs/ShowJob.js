@@ -112,13 +112,10 @@ const ShowJob = (props) => {
                 job={clickedJob} 
                 msgAlert={msgAlert}
                 show={bidModalShow} 
-                handleClose={() => setBidModalShow(false)}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                handleClose={() => setBidModalShow(false)} 
                 addBidForm={addBidForm}  
             />
-            {/* ContractId = models.CharField(max_length=100) 
-  description = models.TextField(max_length=500)
-  bid_amount = models.CharField(max_length=20) */}
-            
         </Container>
     )
 }
