@@ -4,6 +4,7 @@ import {getAllJobs} from '../../api/jobs'
 import Card from 'react-bootstrap/Card'
 import { useNavigate, Link } from 'react-router-dom'
 import messages from '../shared/AutoDismissAlert/messages'
+import BidIndexModel from '../bids/BidIndexModel'
 
 // style for our card container
 const cardContainerStyle = {
@@ -15,7 +16,8 @@ const cardContainerStyle = {
 const JobsIndex = (props) => {
      const navigate = useNavigate()
      const [jobs, setJobs] = useState(null)
-
+     const [clickedJob, setClickedJob]  = useState(null)
+     const [bidModalShow, setBidModalShow] = useState(false)
      const [error, setError] = useState(false)
 
     const { user, msgAlert } = props
@@ -54,6 +56,11 @@ const JobsIndex = (props) => {
                     <Link to={`/jobs/${job.id}`}>
                          { job.description }
                     </Link>
+                    <br />
+                    <button onClick={() => {
+                         setBidModalShow(true)
+                         setClickedJob(job)     
+                    }}>How Current Bids</button>
                     {/* <Link to={`/jobs/${job.id}`}>From { job.owner }</Link> */}
                 </Card.Text>
             </Card.Body>
@@ -63,6 +70,14 @@ const JobsIndex = (props) => {
      return (
           <div style={ cardContainerStyle }>
                { jobCards }
+               <BidIndexModel 
+                              user={user} 
+                              job={clickedJob} 
+                              msgAlert={msgAlert}
+                              show={bidModalShow} 
+                              handleClose={() => setBidModalShow(false)}
+                              addBidForm={false} 
+                         />
           </div>
      )
 }
