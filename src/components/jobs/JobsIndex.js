@@ -12,6 +12,12 @@ const cardContainerStyle = {
      justifyContent: 'left'
  }
 
+ // View all jobs Buttons
+const viewBidsStyle = {
+     display: 'flex',
+     justifyContent: 'right'
+}
+ 
 const JobsIndex = (props) => {
      const navigate = useNavigate()
      const [jobs, setJobs] = useState(null)
@@ -54,7 +60,7 @@ const JobsIndex = (props) => {
                     <Link to={`/jobs/${job.id}`}>
                          { job.description }
                     </Link>
-                    {/* <Link to={`/jobs/${job.id}`}>From { job.owner }</Link> */}
+                    <Link style={viewBidsStyle} to={`/jobs/${job.id}`}>View All Bids</Link>
                 </Card.Text>
             </Card.Body>
         </Card>

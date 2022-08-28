@@ -99,6 +99,7 @@ const ShowJob = (props) => {
                 job={job} 
                 msgAlert={msgAlert}
                 show={bidModalShow} 
+                triggerRefresh={() => setUpdated(prev => !prev)}
                 handleClose={() => setBidModalShow(false)} 
             />
             {/* ContractId = models.CharField(max_length=100) 

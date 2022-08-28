@@ -21,7 +21,7 @@ const BidIndexModel = (props) => {
      const [error, setError] = useState(false)
     const { user, job, msgAlert, show, handleClose } = props
     console.log('Props in BidsIndex', props)
-
+     
      useEffect(() => { 
           if (!user){return navigate('/sign-in')}
           getAllBids(user, job)
@@ -48,7 +48,7 @@ const BidIndexModel = (props) => {
      if (!bids){
           return <p>Wating for the virtual mail man <LoadingScreen/></p>
      } else if (bids.length === 0) {
-          return <p>No bids yet. Maybe you should add some.</p>
+          return <p>No bids yet.</p>
      }
 
      const bidCards = bids.map((bid) => (
@@ -70,7 +70,6 @@ const BidIndexModel = (props) => {
                     <div style={ cardContainerStyle }>
                          { bidCards }
                     </div>
-                    {/* <button onClick={setCreateModalShow(true)}>Add A Bid! You Might Win!</button> */}
                     <h5>Add A Bid! You Might Win!</h5>
                     <CreateBidModel 
                          user={user} 
