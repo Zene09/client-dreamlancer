@@ -19,15 +19,14 @@ const BidIndexModel = (props) => {
      const [bids, setBids] = useState(null)
      const [createModalShow, setCreateModalShow] = useState(false)
      const [error, setError] = useState(false)
-    const { user, job, msgAlert, show, handleClose } = props
-    console.log('Props in BidsIndex', props)
+    const { user, job, msgAlert, show, handleClose, addBidForm } = props
+    console.log('Props in BidsIndexModel', props)
 
      useEffect(() => { 
           if (!user){return navigate('/sign-in')}
+          if (!job) {return null}
           getAllBids(user, job)
                .then(res => {
-                    // if (res.data.bids.contract_ref == job.id)
-                    // console.log('HIHIHI',res.data.bids)
                     const conBids = res.data.bids.filter(bid=>(bid.contract_ref == job.id))
                     console.log(conBids)
                     setBids(conBids)
@@ -40,13 +39,13 @@ const BidIndexModel = (props) => {
                     })
                     setError(true)
                 })
-     },[])
+     },[show])
 
      if (error) {
           return <p>Error!</p>
       }
      if (!bids){
-          return <p>Wating for the virtual mail man <LoadingScreen/></p>
+          return null
      } else if (bids.length === 0) {
           return <p>No bids yet.</p>
      }
@@ -55,8 +54,8 @@ const BidIndexModel = (props) => {
           <Card style={{ width: '30%', margin: 5}} key={ bid._id }>
             <Card.Header>${ bid.bid_amount } - Owner: { bid.owner }</Card.Header>
             <Card.Body>
-                <Card.Text>
-                         { bid.description } <br />
+                <Card.Text> 
+                         { bid.description } <br /> 
                          contract Id: { bid.contract_ref}
                 </Card.Text>
             </Card.Body>
@@ -71,14 +70,19 @@ const BidIndexModel = (props) => {
                          { bidCards }
                     </div>
                     {/* <button onClick={setCreateModalShow(true)}>Add A Bid! You Might Win!</button> */}
-                    <h5>Add A Bid! You Might Win!</h5>
-                    <CreateBidModel 
-                         user={user} 
-                         job={job} 
-                         msgAlert={msgAlert}
-                         show={createModalShow}
-                         handleClose={() => setCreateModalShow(false)}
-                    />
+                    {addBidForm === true ?
+                         <>
+                              <h5>Add A Bid! You Might Win!</h5>
+                              <CreateBidModel 
+                                   user={user} 
+                                   job={job} 
+                                   msgAlert={msgAlert}
+                                   show={createModalShow}
+                                   handleClose={() => setCreateModalShow(false)}
+                              />
+                         </>
+                         : null
+                    }
               </Modal.Body>
           </Modal>
       )
