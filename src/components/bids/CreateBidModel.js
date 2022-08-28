@@ -35,8 +35,8 @@ const CreateBidModel = (props) => {
      const handleSubmit = (e) => {
           e.preventDefault()
           createOneBid(bid, props.user)
-               .then(() => handleClose())
                .then(() => triggerRefresh())
+               .then(() => handleClose())
                .then(() => {
                     msgAlert({
                          heading: 'Oh Yeah!',
@@ -50,7 +50,7 @@ const CreateBidModel = (props) => {
                )
      }
 
-     return <BidForm triggerRefresh={triggerRefresh} show={show} bid={bid} onHide={handleClose} handleChange={handleChange} handleSubmit={handleSubmit} />
+     return <BidForm triggerRefresh={triggerRefresh} show={show} bid={bid} handleChange={handleChange} handleSubmit={handleSubmit} />
 }
 
 export default CreateBidModel

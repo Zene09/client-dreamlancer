@@ -18,6 +18,7 @@ const BidIndexModel = (props) => {
      const navigate = useNavigate()
      const [bids, setBids] = useState(null)
      const [createModalShow, setCreateModalShow] = useState(false)
+     const [updated, setUpdated] = useState(false)
      const [error, setError] = useState(false)
     const { user, job, msgAlert, show, handleClose } = props
     console.log('Props in BidsIndex', props)
@@ -40,7 +41,7 @@ const BidIndexModel = (props) => {
                     })
                     setError(true)
                 })
-     },[])
+     },[updated])
 
      if (error) {
           return <p>Error!</p>
@@ -73,10 +74,11 @@ const BidIndexModel = (props) => {
                     <h5>Add A Bid! You Might Win!</h5>
                     <CreateBidModel 
                          user={user} 
+                         triggerRefresh={() => setUpdated(prev => !prev)}
                          job={job} 
                          msgAlert={msgAlert}
                          show={createModalShow}
-                         handleClose={() => setCreateModalShow(false)}
+                         handleClose={() => handleClose()}
                     />
               </Modal.Body>
           </Modal>
