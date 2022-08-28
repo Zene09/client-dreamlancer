@@ -11,6 +11,8 @@ import BidIndexModel from '../bids/BidIndexModel'
 
 const ShowJob = (props) => {
     const [job, setJob] = useState(null)
+    const [clickedJob, setClickedJob]  = useState(null)
+    const [addBidForm, setAddBidForm] = useState(null)
     const { user, msgAlert } = props
     const { id } = useParams()
     
@@ -80,9 +82,20 @@ const ShowJob = (props) => {
                 null}
 
                 {user.is_dev === true ?
-                <button onClick={()=> setBidModalShow(true)}>
-                    Make A Bid For This Job
-                </button>
+                <>
+                    <button onClick={()=> {
+                        setBidModalShow(true)
+                        setAddBidForm(false)
+                        setClickedJob(job)}}
+                    >See Bids Already Made
+                    </button>
+                    <button onClick={()=> {
+                        setBidModalShow(true)
+                        setAddBidForm(true)
+                        setClickedJob(job)}}
+                    >Make A Bid For This Job
+                    </button>
+                </>
                 : null}
 
             <EditJobModal 
@@ -96,16 +109,13 @@ const ShowJob = (props) => {
             />
             <BidIndexModel 
                 user={user} 
-                job={job} 
+                job={clickedJob} 
                 msgAlert={msgAlert}
                 show={bidModalShow} 
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 handleClose={() => setBidModalShow(false)} 
+                addBidForm={addBidForm}  
             />
-            {/* ContractId = models.CharField(max_length=100) 
-  description = models.TextField(max_length=500)
-  bid_amount = models.CharField(max_length=20) */}
-            
         </Container>
     )
 }
