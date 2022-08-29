@@ -49,9 +49,7 @@ const BidIndexModel = (props) => {
      }
      if (!bids) {
           return null
-     } else if (bids.length === 0) {
-          return <p>No bids yet.</p>
-     }
+     } 
 
      const acceptButton = (<>
           {job.owner === user.id ?
@@ -104,6 +102,7 @@ const BidIndexModel = (props) => {
                               {clientBidCards}
                          </div>
                     }
+
 
                     {addBidForm === true ?
                          <>
