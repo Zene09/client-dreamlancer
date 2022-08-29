@@ -31,7 +31,7 @@ const clientOptions = (
 )
 const devOptions = (
 	<Nav.Item className='m-2'>
-		<Link to="/bets" style={linkStyle}>
+		<Link to="/mybids" style={linkStyle}>
 			My Bids
 		</Link>
 	</Nav.Item>
