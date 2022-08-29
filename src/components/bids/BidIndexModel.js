@@ -6,6 +6,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import messages from '../shared/AutoDismissAlert/messages'
 import { Modal } from 'react-bootstrap'
 import CreateBidModel from './CreateBidModel'
+import { editOneJob } from '../../api/jobs'
 
 // style for our card container
 const cardContainerStyle = {
@@ -20,9 +21,13 @@ const BidIndexModel = (props) => {
      const [createModalShow, setCreateModalShow] = useState(false)
      const [updated, setUpdated] = useState(false)
      const [error, setError] = useState(false)
-     const [ accepted, setAccepted] = useState(false)
+     const [accepted, setAccepted] = useState(false)
 
-     const { user, job, msgAlert, show, handleClose, addBidForm } = props
+     const { user, job, msgAlert, show, handleClose, addBidForm, editOneJob } = props
+     // const [job, setJob] = useState(props.job)
+
+     // console.log('ujob in index modal', ujob)
+
      console.log('Props in BidsIndexModel', props)
 
      useEffect(() => {
@@ -49,19 +54,32 @@ const BidIndexModel = (props) => {
      }
      if (!bids) {
           return null
-     } 
+     }
 
      const acceptButton = (<>
           {job.owner === user.id ?
-               <button onClick={() => setAccepted(true) } > Accept </button>
+               <button onClick={() => setAccepted(true)} > Accept </button>
                :
                null}
      </>)
 
-     if (accepted) {
-          console.log("can_bid status", job.can_bid)
-          job.can_bid = false
-     }
+     // if (accepted) {
+     //      console.log("can_bid status", job.can_bid)
+     //      setJob(prevJob => {
+     //           const updatedJob = {
+     //                can_bid: false
+     //           }
+     //           return {
+     //                ...prevJob,
+     //                ...updatedJob
+     //           }
+     //      })
+     //      editOneJob(job, user)
+
+     //      job.can_bid = false
+     //      console.log("new can_bid status?", job.can_bid)
+
+     // }
 
      const bidCards = bids.map((bid) => (
           <Card style={{ width: '30%', margin: 5 }} key={bid._id}>
@@ -92,6 +110,11 @@ const BidIndexModel = (props) => {
           <Modal show={show} onHide={handleClose}>
                <Modal.Header closeButton />
                <Modal.Body>
+                    {bids.length === 0
+                    ?
+                    <p>No bids</p>
+                    : null
+          }
                     {user.is_dev === true
                          ?
                          <div style={cardContainerStyle}>
