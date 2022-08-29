@@ -6,6 +6,7 @@ import messages from '../shared/AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { submitButton } from '../shared/Styling'
 
 const SignIn = (props) => {
 	// constructor(props) {
@@ -81,7 +82,7 @@ const SignIn = (props) => {
                             onChange={e => setPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
+                    <Button style={ submitButton } type="submit" class="btn btn-outline-dark">
                         Submit
                     </Button>
                 </Form>

@@ -7,6 +7,7 @@ import messages from '../shared/AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { submitButton } from '../shared/Styling'
 
 const SignUp = (props) => {
 	// constructor(props) {
@@ -114,7 +115,7 @@ const SignUp = (props) => {
                             onChange={e => setIsDev(e.target.checked)}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
+                    <Button style={ submitButton } type="submit" class="btn btn-outline-dark">
                         Submit
                     </Button>
                 </Form>
