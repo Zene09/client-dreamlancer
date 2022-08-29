@@ -48,9 +48,7 @@ const BidIndexModel = (props) => {
       }
      if (!bids){
           return null
-     } else if (bids.length === 0) {
-          return <p>No bids yet.</p>
-     }
+     } 
 
      const bidCards = bids.map((bid) => (
           <Card style={{ width: '30%', margin: 5}} key={ bid._id }>
@@ -70,7 +68,9 @@ const BidIndexModel = (props) => {
               <Modal.Header closeButton />
               <Modal.Body>
                     <div style={ cardContainerStyle }>
-                         { bidCards }
+                         {bidCards.length === 0 ?
+                         <p>No Bids Yet!</p>
+                    : { bidCards } }
                     </div>
                     {addBidForm === true ?
                          <>
