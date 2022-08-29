@@ -19,6 +19,8 @@ const SignUp = (props) => {
 	// 	}
 	// }    
     const [email, setEmail] = useState('')
+    const [name, setName] = useState('')
+    const [isDev, setIsDev] = useState(false)
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
 
@@ -29,7 +31,7 @@ const SignUp = (props) => {
 
 		const { msgAlert, setUser } = props
 
-        const credentials = {email, password, passwordConfirmation}
+        const credentials = {email, name, isDev, password, passwordConfirmation}
 
 		signUp(credentials)
 			.then(() => signIn(credentials))
@@ -44,6 +46,7 @@ const SignUp = (props) => {
 			.then(() => navigate('/'))
 			.catch((error) => {
                 setEmail('')
+                setName('')
                 setPassword('')
                 setPasswordConfirmation('')
 				msgAlert({
@@ -53,7 +56,6 @@ const SignUp = (props) => {
 				})
 			})
 	}
-
 
     return (
         <div className='row'>
@@ -71,8 +73,19 @@ const SignUp = (props) => {
                             onChange={e => setEmail(e.target.value)}
                         />
                     </Form.Group>
+                    <Form.Group controlId='name'>
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control
+                            required
+                            type='string'
+                            name='name'
+                            value={name}
+                            placeholder='Enter Username'
+                            onChange={e => setName(e.target.value)}
+                        />
+                    </Form.Group>
                     <Form.Group controlId='password'>
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label>Password (5 letters min.)</Form.Label>
                         <Form.Control
                             required
                             name='password'
@@ -91,6 +104,14 @@ const SignUp = (props) => {
                             type='password'
                             placeholder='Confirm Password'
                             onChange={e => setPasswordConfirmation(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId='is_dev'>
+                        <Form.Label>Is this for a Dev Account?</Form.Label>
+                        <Form.Check
+                            name='is_dev'
+                            checked={isDev}
+                            onChange={e => setIsDev(e.target.checked)}
                         />
                     </Form.Group>
                     <Button variant='primary' type='submit'>

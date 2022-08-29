@@ -8,6 +8,8 @@ export const signUp = (credentials) => {
 		data: {
 			credentials: {
 				email: credentials.email,
+				name: credentials.name,
+				is_dev: credentials.isDev,
 				password: credentials.password,
 				password_confirmation: credentials.passwordConfirmation,
 			},
@@ -40,7 +42,7 @@ export const signOut = (user) => {
 
 export const changePassword = (passwords, user) => {
 	return axios({
-		url: apiUrl + 'change-password/',
+		url: apiUrl + 'change-pw/',
 		method: 'PATCH',
 		headers: {
 			Authorization: `Token ${user.token}`,
