@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import { updateJobSuccess, updateJobFailure } from '../shared/AutoDismissAlert/messages'
 
-// componets
+// components
 import JobForm from '../shared/JobForm'
 
 const EditJobModal = (props) => {
