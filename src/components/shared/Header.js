@@ -30,11 +30,11 @@ const clientOptions = (
 				Post A Job
 			</Link>
 		</Nav.Item>
-		{/* <Nav.Item className='m-2'>
+		<Nav.Item className='m-2'>
 			<Link to="/myBids" style={linkStyle}>
 				My Bids
 			</Link>
-		</Nav.Item> */}
+		</Nav.Item>
 	</>
 )
 
