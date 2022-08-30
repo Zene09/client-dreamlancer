@@ -7,6 +7,7 @@ import messages from '../shared/AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { submitButton, pageStyle } from '../shared/Styling'
 
 const SignUp = (props) => {
 	// constructor(props) {
@@ -58,7 +59,7 @@ const SignUp = (props) => {
 	}
 
     return (
-        <div className='row'>
+        <div style={pageStyle} className='row'>
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
                 <h3>Sign Up</h3>
                 <Form onSubmit={onSignUp}>
@@ -107,14 +108,14 @@ const SignUp = (props) => {
                         />
                     </Form.Group>
                     <Form.Group controlId='is_dev'>
-                        <Form.Label>Is this for a Dev Account?</Form.Label>
+                        <Form.Label>Is this for a Dev Account? (Check box if YES)</Form.Label>
                         <Form.Check
                             name='is_dev'
                             checked={isDev}
                             onChange={e => setIsDev(e.target.checked)}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
+                    <Button style={ submitButton } type="submit" class="btn btn-outline-dark">
                         Submit
                     </Button>
                 </Form>
