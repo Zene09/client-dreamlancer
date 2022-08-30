@@ -24,11 +24,18 @@ const authenticatedOptions = (
 )
 
 const clientOptions = (
-	<Nav.Item className='m-2'>
-		<Link to="/addJob" style={linkStyle}>
-			Post A Job
-		</Link>
-	</Nav.Item>
+	<>
+		<Nav.Item className='m-2'>
+			<Link to="/addJob" style={linkStyle}>
+				Post A Job
+			</Link>
+		</Nav.Item>
+		{/* <Nav.Item className='m-2'>
+			<Link to="/myBids" style={linkStyle}>
+				My Bids
+			</Link>
+		</Nav.Item> */}
+	</>
 )
 
 const unauthenticatedOptions = (
@@ -59,8 +66,8 @@ const alwaysOptions = (
 
 const devOptions = (
 	<Nav.Item className='m-2'>
-		<Link to="/mybids" style={linkStyle}>
-			{/* My Bids */}
+		<Link to="/myBids" style={linkStyle}>
+			My Bids
 		</Link>
 	</Nav.Item>
 )
@@ -84,9 +91,9 @@ const Header = ({ user }) => (
 				{user && user.is_dev === false ?
 					clientOptions :
 					nothing}
-				{/* {user && user.is_dev === true ?
+				{user && user.is_dev === true ?
 					devOptions :
-					nothing} */}
+					nothing}
 				{user ?
 					authenticatedOptions : unauthenticatedOptions}
 			</Nav>

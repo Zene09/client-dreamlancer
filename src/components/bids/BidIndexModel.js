@@ -7,6 +7,7 @@ import messages from '../shared/AutoDismissAlert/messages'
 import { Modal } from 'react-bootstrap'
 import CreateBidModel from './CreateBidModel'
 import { editOneJob } from '../../api/jobs'
+import { createOneContractBid } from '../../api/jobBids'
 import { pageStyle, showButton, submitButton, cardHeader } from '../shared/Styling'
 // style for our card container
 const cardContainerStyle = {
@@ -21,12 +22,12 @@ const BidIndexModel = (props) => {
      const [createModalShow, setCreateModalShow] = useState(false)
      const [updated, setUpdated] = useState(false)
      const [error, setError] = useState(false)
-     // const [accepted, setAccepted] = useState(false)
+     const [accepted, setAccepted] = useState(false)
 
-     const { user, job, msgAlert, show, handleClose, addBidForm, editOneJob } = props
-     // const [job, setJob] = useState(props.job)
+     const { user, msgAlert, job, show, handleClose, addBidForm } = props
+     // const [jobn, setJobn] = useState({...job})
 
-     // console.log('ujob in index modal', ujob)
+     // console.log('HIHIHIHI JOBNS', jobn)
 
      console.log('Props in BidsIndexModel', props)
 
@@ -55,6 +56,35 @@ const BidIndexModel = (props) => {
      if (!bids) {
           return null
      }
+     const run = async (bidId) => {
+          console.log("HIHIHI!")
+          console.log('bidId ',bidId)
+          console.table(job)
+          // console.log('bidId ',bidId)
+          
+          const updatedJob = {
+                    can_bid: false
+               }
+               console.log('HIHIHIHI preJob')
+               // console.log(prevJob)
+               console.log('HIHIHIHI updatedjob')
+               console.log(updatedJob)
+               const prevJob = {...job}
+               editOneJob({...prevJob, ...updatedJob}, user)
+               const contractBid = {
+                    contract_id: job.id, 
+                    bid_id: bidId, 
+                    status: 'PL', }
+               createOneContractBid(contractBid, user)
+     }
+
+// setAccepted(true)
+     // const acceptButton = (<>
+     //      {job.owner === user.id ?
+     //           <button onClick={run} > Accept </button>
+     //           :
+     //           null}
+     // </>)
 
      // const acceptButton = (<>
      //      {job.owner === user.id ?
@@ -63,23 +93,7 @@ const BidIndexModel = (props) => {
      //           null}
      // </>)
 
-     // if (accepted) {
-     //      console.log("can_bid status", job.can_bid)
-     //      setJob(prevJob => {
-     //           const updatedJob = {
-     //                can_bid: false
-     //           }
-     //           return {
-     //                ...prevJob,
-     //                ...updatedJob
-     //           }
-     //      })
-     //      editOneJob(job, user)
 
-     //      job.can_bid = false
-     //      console.log("new can_bid status?", job.can_bid)
-
-     // }
 
      const bidCards = bids.map((bid) => (
           <Card style={{ width: '30%', margin: 5 }} key={bid._id}>
@@ -100,6 +114,12 @@ const BidIndexModel = (props) => {
                     <Card.Text>
                          {bid.description} <br />
                          contract Id: {bid.contract_ref}
+                         <p>
+                         {job.owner === user.id ?
+               <button class='btn btn-outline-dark' style={ submitButton } onClick={()=>run(bid.id)} > Accept </button>
+               :
+               null}
+                         </p>
                          {/* <p>{acceptButton}</p> */}
                     </Card.Text>
                </Card.Body>
