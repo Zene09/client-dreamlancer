@@ -17,8 +17,8 @@ const SignIn = (props) => {
 	// 		password: '',
 	// 	}
 	// }
-    const [email, setEmail] = useState('nodev@no.com')
-    const [password, setPassword] = useState('asjkl')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
     const navigate = useNavigate()
 
