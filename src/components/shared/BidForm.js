@@ -1,10 +1,11 @@
 import { Form, Button,  } from 'react-bootstrap'
+import { submitButton, pageStyle } from './Styling'
  
 const BidForm = (props) => {
     console.log('BidForm props: ', props)
     const { bid } = props
      return (
-         <Form onSubmit={props.handleSubmit}>
+         <Form style={pageStyle} onSubmit={props.handleSubmit}>
               {/* <Form.Label htmlFor="title">Title</Form.Label>
               <Form.Control
                   placeholder="What is your bid's title?"
@@ -29,7 +30,7 @@ const BidForm = (props) => {
                   id="bid_amount"
                   onChange={props.handleChange}
                   />
-              <Button type="submit">Submit</Button>
+              <Button variant="outline-dark" style={submitButton} type="submit">Submit</Button>
           </Form>
       )
  }

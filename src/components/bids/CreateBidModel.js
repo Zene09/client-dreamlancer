@@ -3,6 +3,7 @@ import { createOneBid } from './../../api/bids'
 import { useNavigate } from 'react-router-dom'
 import BidForm from '../shared/BidForm'
 
+
 const CreateBidModel = (props) => {
      const navigate = useNavigate()
      const {

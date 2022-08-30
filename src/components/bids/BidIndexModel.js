@@ -7,7 +7,7 @@ import messages from '../shared/AutoDismissAlert/messages'
 import { Modal } from 'react-bootstrap'
 import CreateBidModel from './CreateBidModel'
 import { editOneJob } from '../../api/jobs'
-
+import { pageStyle, showButton, submitButton} from '../shared/Styling'
 // style for our card container
 const cardContainerStyle = {
      display: 'flex',
@@ -83,7 +83,7 @@ const BidIndexModel = (props) => {
 
      const bidCards = bids.map((bid) => (
           <Card style={{ width: '30%', margin: 5 }} key={bid._id}>
-               <Card.Header>${bid.bid_amount} - Owner: {bid.owner}</Card.Header>
+               <Card.Header style={pageStyle}>${bid.bid_amount} - Owner: {bid.owner}</Card.Header>
                <Card.Body>
                     <Card.Text>
                          {bid.description} <br />
@@ -129,7 +129,7 @@ const BidIndexModel = (props) => {
 
                     {addBidForm === true ?
                          <>
-                              <h5>Add A Bid! You Might Win!</h5>
+                              <h5 style={pageStyle}>Add A Bid! You Might Win!</h5>
                               <CreateBidModel
                                    user={user}
                                    job={job}

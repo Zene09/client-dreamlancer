@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card'
 import { useNavigate, Link } from 'react-router-dom'
 import messages from '../shared/AutoDismissAlert/messages'
 import BidIndexModel from '../bids/BidIndexModel'
-import { showButton, pageStyle } from "../shared/Styling"
+import { submitButton, showButton, pageStyle } from "../shared/Styling"
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 
@@ -95,7 +95,7 @@ const JobsIndex = (props) => {
                          setClickedJob(job)     
                          }}>Show Current Bids</button>
                          {job.owner === user.id ?
-                              <button onClick={() => setShow(true)}>Close Bid</button>
+                              <button class="btn btn-outline-dark" style={ submitButton } onClick={() => setShow(true)}>Close Bid</button>
                               :
                               null}
 

@@ -25,7 +25,7 @@ const JobForm = (props) => {
                   />
                 <Form.Label htmlFor="deadline: 2022-08-24T08:26:30">Deadline</Form.Label>
               <Form.Control
-                  placeholder="deadline"
+                  placeholder="ex. DD-MM-YYYY 08:26:00"
                   value={job.deadline}
                   name="deadline"
                   id="deadline"
