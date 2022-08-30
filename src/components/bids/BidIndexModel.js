@@ -23,10 +23,10 @@ const BidIndexModel = (props) => {
      const [error, setError] = useState(false)
      const [accepted, setAccepted] = useState(false)
 
-     const { user, job, msgAlert, show, handleClose, addBidForm, editOneJob } = props
-     // const [job, setJob] = useState(props.job)
+     const { user, msgAlert, job, show, handleClose, addBidForm } = props
+     // const [jobn, setJobn] = useState({...job})
 
-     // console.log('ujob in index modal', ujob)
+     // console.log('HIHIHIHI JOBNS', jobn)
 
      console.log('Props in BidsIndexModel', props)
 
@@ -55,13 +55,48 @@ const BidIndexModel = (props) => {
      if (!bids) {
           return null
      }
+     const run = async () => {
+          console.log("HIHIHI!")
+          console.log('job ',job)
+          
+          const updatedJob = {
+                    title: 'new!!',
+                    can_bid: false
+               }
+               console.log('HIHIHIHI preJob')
+               // console.log(prevJob)
+               console.log('HIHIHIHI updatedjob')
+               console.log(updatedJob)
+               const prevJob = {...job}
+               // const newJob = await setJobs({
+               //      ...prevJob,
+               //      ...updatedJob}
+               // )
+               
+               editOneJob({
+                    ...prevJob,
+                    ...updatedJob}, user)
 
+          // console.log("newJob")
+          // console.log(newJob)
+          // editOneJob(job, user)
+          
+               // console.log('before editOneJob after updated: ', job)
+          //      .then((res) => {
+          //           console.log('DONE, job has been edited')
+          //           console.log('job: ',res)
+          //           // navigate(`/jobs/${id}`)
+          // .catch((error) => console.error)
+          
+     }
+// setAccepted(true)
      const acceptButton = (<>
           {job.owner === user.id ?
-               <button onClick={() => setAccepted(true)} > Accept </button>
+               <button onClick={run} > Accept </button>
                :
                null}
      </>)
+
 
      // if (accepted) {
      //      console.log("can_bid status", job.can_bid)
