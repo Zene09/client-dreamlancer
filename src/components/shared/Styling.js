@@ -9,6 +9,8 @@ B22206 = red
 fontFamily: 'Play, sans-serif'
 */
 
+// Buttons //
+
 // class="btn btn-outline-dark"
 // class="btn btn-outline-light"
 const submitButton = {
@@ -34,3 +36,13 @@ const warningButton = {
     margin: '5px'
 }
 export { warningButton }
+
+
+// page style for forms
+const pageStyle = {
+    backgroundColor: '#FEF8EB',
+    fontFamily: 'Play',
+    color: '#381D2A',
+    margin: '5px'
+}
+export { pageStyle }
