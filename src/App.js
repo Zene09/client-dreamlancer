@@ -15,7 +15,10 @@ import ChangePassword from './components/auth/ChangePassword'
 import JobsIndex from './components/jobs/JobsIndex'
 import ShowJob from './components/jobs/ShowJob'
 import CreateJob from './components/jobs/CreateJob'
-import MyBidsIndex from './components/mybids/MyBidsIndex'
+import MyBidsIndex from './components/mybids/myBidsIndex'
+
+// import myBidsIndexModel from './components/mybids/myBidsIndex'
+
 
 const App = () => {
 

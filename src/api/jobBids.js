@@ -34,7 +34,7 @@ export const createOneContractBid = (contractBid, user) => {
   console.log('API createOneContractBid user.token=', user.token)
   return axios({
     method: 'POST',
-    url: `${apiUrl}/contract_bid/`,
+    url: `${apiUrl}contract_bid/`,
     data: {contract_data: contractBid },
     headers: { Authorization: `Token ${user.token}` }
   })
@@ -43,7 +43,7 @@ export const createOneContractBid = (contractBid, user) => {
 //UPDATE ContractBid
 export const editOneContractBid = (bid, user, updatedContractBid) => {
   return axios({
-    url: `${apiUrl}/contract_bid/${bid.id}/${updatedContractBid}`,
+    url: `${apiUrl}contract_bid/${bid.id}/${updatedContractBid}`,
     method: 'PATCH',
     data: { bid: updatedContractBid },
     headers: { Authorization: `Token ${user.token}` }

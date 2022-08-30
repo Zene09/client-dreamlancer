@@ -1,10 +1,12 @@
 import { Form, Button,  } from 'react-bootstrap'
+
+import { submitButton, pageStyle } from './Styling'
  
 const JobForm = (props) => {
     console.log('JobForm props: ', props)
     const { job } = props
      return (
-         <Form onSubmit={props.handleSubmit}>
+         <Form style={ pageStyle } onSubmit={props.handleSubmit}>
               <Form.Label htmlFor="title">Title</Form.Label>
               <Form.Control
                   placeholder="What is your job's title?"
@@ -23,7 +25,7 @@ const JobForm = (props) => {
                   />
                 <Form.Label htmlFor="deadline: 2022-08-24T08:26:30">Deadline</Form.Label>
               <Form.Control
-                  placeholder="deadline"
+                  placeholder="ex. DD-MM-YYYY 08:26:00"
                   value={job.deadline}
                   name="deadline"
                   id="deadline"
@@ -57,7 +59,7 @@ const JobForm = (props) => {
                   id="tags"
                   onChange={props.handleChange}
               />
-              <Button type="submit">Submit</Button>
+              <Button style={ submitButton } type='submit' variant='outline-dark'>Submit</Button>
           </Form>
       )
  }

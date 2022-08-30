@@ -36,10 +36,10 @@ const SignOut = (props) => {
                     <h2>Are you sure you want to sign out?</h2>
                     <small>We hate to see you go...</small><br/>
                     <ButtonGroup>
-                        <Button style={ destroyButton } class="btn btn-outline-dark" onClick={onSignOut}>
+                        <Button style={ destroyButton } variant='outline-light' onClick={onSignOut}>
                             Sign Out
                         </Button>
-                        <Button style={ warningButton } class="btn btn-outline-dark" onClick={onCancel}>
+                        <Button style={ warningButton } variant='outline-light' onClick={onCancel}>
                             Cancel
                         </Button>
                     </ButtonGroup>

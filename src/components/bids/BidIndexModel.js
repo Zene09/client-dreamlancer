@@ -8,7 +8,7 @@ import { Modal } from 'react-bootstrap'
 import CreateBidModel from './CreateBidModel'
 import { editOneJob } from '../../api/jobs'
 import { createOneContractBid } from '../../api/jobBids'
-
+import { pageStyle, showButton, submitButton, cardHeader } from '../shared/Styling'
 // style for our card container
 const cardContainerStyle = {
      display: 'flex',
@@ -70,7 +70,6 @@ const BidIndexModel = (props) => {
                console.log('HIHIHIHI updatedjob')
                console.log(updatedJob)
                const prevJob = {...job}
-               
                editOneJob({...prevJob, ...updatedJob}, user)
                const contractBid = {
                     contract_id: job.id, 
@@ -78,7 +77,7 @@ const BidIndexModel = (props) => {
                     status: 'PL', }
                createOneContractBid(contractBid, user)
      }
-          
+
 // setAccepted(true)
      // const acceptButton = (<>
      //      {job.owner === user.id ?
@@ -87,11 +86,18 @@ const BidIndexModel = (props) => {
      //           null}
      // </>)
 
+     // const acceptButton = (<>
+     //      {job.owner === user.id ?
+     //           <button onClick={() => setAccepted(true)} > Accept </button>
+     //           :
+     //           null}
+     // </>)
+
 
 
      const bidCards = bids.map((bid) => (
           <Card style={{ width: '30%', margin: 5 }} key={bid._id}>
-               <Card.Header>${bid.bid_amount} - Owner: {bid.owner}</Card.Header>
+               <Card.Header style={ cardHeader }>${bid.bid_amount} - Owner: {bid.owner}</Card.Header>
                <Card.Body>
                     <Card.Text>
                          {bid.description} <br />
@@ -110,10 +116,11 @@ const BidIndexModel = (props) => {
                          contract Id: {bid.contract_ref}
                          <p>
                          {job.owner === user.id ?
-               <button onClick={()=>run(bid.id)} > Accept </button>
+               <button class='btn btn-outline-dark' style={ submitButton } onClick={()=>run(bid.id)} > Accept </button>
                :
                null}
                          </p>
+                         {/* <p>{acceptButton}</p> */}
                     </Card.Text>
                </Card.Body>
           </Card>
@@ -142,7 +149,7 @@ const BidIndexModel = (props) => {
 
                     {addBidForm === true ?
                          <>
-                              <h5>Add A Bid! You Might Win!</h5>
+                              <h5 style={pageStyle}>Add A Bid! You Might Win!</h5>
                               <CreateBidModel
                                    user={user}
                                    job={job}
