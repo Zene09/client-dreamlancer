@@ -50,3 +50,11 @@ const pageStyle = {
     margin: '5px'
 }
 export { pageStyle }
+
+const cardHeader = {
+    backgroundColor: '#F4A460',
+    fontFamily: 'Play',
+    color: '#381D2A',
+    margin: '5px'
+}
+export { cardHeader }

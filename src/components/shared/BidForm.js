@@ -1,5 +1,5 @@
 import { Form, Button,  } from 'react-bootstrap'
-import { submitButton, pageStyle } from './Styling'
+import { submitButton, pageStyle, cardHeader } from './Styling'
  
 const BidForm = (props) => {
     console.log('BidForm props: ', props)
@@ -30,7 +30,7 @@ const BidForm = (props) => {
                   id="bid_amount"
                   onChange={props.handleChange}
                   />
-              <Button variant="outline-dark" style={submitButton} type="submit">Submit</Button>
+              <Button variant="outline-dark" style={ submitButton } type="submit">Submit</Button>
           </Form>
       )
  }

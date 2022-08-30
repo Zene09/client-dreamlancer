@@ -8,7 +8,7 @@ import { Container, Card } from 'react-bootstrap'
 
 import EditJobModal from './EditJobModal'
 import BidIndexModel from '../bids/BidIndexModel'
-import { destroyButton, showButton, pageStyle } from "../shared/Styling"
+import { cardHeader, destroyButton, showButton, pageStyle } from "../shared/Styling"
 
 const ShowJob = (props) => {
     const [job, setJob] = useState(null)
@@ -53,7 +53,7 @@ const ShowJob = (props) => {
     return (
         <Container className="fluid">
             <Card>
-                <Card.Header style={pageStyle}>{ job.title }</Card.Header>
+                <Card.Header style={ cardHeader }>{ job.title }</Card.Header>
                 <Card.Body style={ pageStyle }>
                     <Card.Text>
                         <div><small>Owner ID: { job.owner }</small></div>

@@ -44,11 +44,11 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
 	<>
-		<Nav.Link>
+		{/* <Nav.Link>
 			<Link to='/' style={linkStyle}>
 				Home
 			</Link>
-		</Nav.Link>
+		</Nav.Link> */}
 		<Nav.Item className='m-2'>
 			<Link to='/jobs' style={linkStyle}>
 				Jobs
