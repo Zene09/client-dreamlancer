@@ -35,6 +35,7 @@ Run the development server with 'npm start'
 ![](Planning_Docs/dreamlancer_ERD.png)
 
 ## Resources
+API repo link: https://github.com/Zene09/server-dreamlancer
 
 ## Collaborator Roles
 - Kyle Moreno: Back End Dev
