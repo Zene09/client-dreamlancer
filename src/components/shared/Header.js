@@ -24,11 +24,18 @@ const authenticatedOptions = (
 )
 
 const clientOptions = (
-	<Nav.Item className='m-2'>
-		<Link to="/addJob" style={linkStyle}>
-			Post A Job
-		</Link>
-	</Nav.Item>
+	<>
+		<Nav.Item className='m-2'>
+			<Link to="/addJob" style={linkStyle}>
+				Post A Job
+			</Link>
+		</Nav.Item>
+		<Nav.Item className='m-2'>
+			<Link to="/myBids" style={linkStyle}>
+				My Bids
+			</Link>
+		</Nav.Item>
+	</>
 )
 const devOptions = (
 	<Nav.Item className='m-2'>
@@ -77,7 +84,7 @@ const Header = ({ user }) => (
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
 				{user && (
-					<span className='navbar-text mr-2'>Welcome, {user.name}</span>
+					<span className='navbar-text mr-2'>Welcome, {user.token}</span>
 				)}
 				{alwaysOptions}
 				{user && user.is_dev === true ?
