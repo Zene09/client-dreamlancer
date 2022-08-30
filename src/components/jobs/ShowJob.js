@@ -8,6 +8,7 @@ import { Container, Card } from 'react-bootstrap'
 
 import EditJobModal from './EditJobModal'
 import BidIndexModel from '../bids/BidIndexModel'
+import { destroyButton, showButton, pageStyle } from "../shared/Styling"
 
 const ShowJob = (props) => {
     const [job, setJob] = useState(null)
@@ -53,7 +54,7 @@ const ShowJob = (props) => {
         <Container className="fluid">
             <Card>
                 <Card.Header>{ job.title }</Card.Header>
-                <Card.Body>
+                <Card.Body style={ pageStyle }>
                     <Card.Text>
                         <div><small>Owner ID: { job.owner }</small></div>
                         <div><small>Description: { job.description }</small></div>
@@ -68,13 +69,14 @@ const ShowJob = (props) => {
             {job.owner === user.id
                 ?
                 <>
-            <button onClick={deleteThis}>Delete Job</button>
+            <button class="btn btn-outline-light" style={ destroyButton } onClick={deleteThis}>Delete Job</button>
             {/* <button onClick={}>Bid on job</button> */}
             
                     <button 
+                        style={ showButton }
                         onClick={() => setEditModalShow(true)} 
                         className="m-2" 
-                        variant="warning"
+                        class="btn btn-outline-light"
                     >Edit The Job
                     </button>
                 </>

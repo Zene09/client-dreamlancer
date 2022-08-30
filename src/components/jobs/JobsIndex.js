@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card'
 import { useNavigate, Link } from 'react-router-dom'
 import messages from '../shared/AutoDismissAlert/messages'
 import BidIndexModel from '../bids/BidIndexModel'
+import { showButton, pageStyle } from "../shared/Styling"
 
 // style for our card container
 const cardContainerStyle = {
@@ -56,14 +57,14 @@ const JobsIndex = (props) => {
 
      const jobCards = jobs.map((job) => (
           <Card style={{ width: '30%', margin: 5}} key={ job._id }>
-            <Card.Header>{ job.title } - { job.owner }</Card.Header>
-            <Card.Body>
+            <Card.Header style={{backgroundColor: '#F4A460', fontFamily: 'Play'}}>{ job.title } - { job.owner }</Card.Header>
+            <Card.Body style={ pageStyle }>
                 <Card.Text>
                     <Link to={`/jobs/${job.id}`}>
                          { job.description }
                     </Link>
                     <br />
-                    <button class='btn btn-outline-dark'style={viewBidsStyle} onClick={() => {
+                    <button class="btn btn-outline-light" style={ showButton } onClick={() => {
                          setBidModalShow(true)
                          setClickedJob(job)     
                     }}>View Current Bids</button>
