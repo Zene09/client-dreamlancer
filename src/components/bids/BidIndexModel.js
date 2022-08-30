@@ -21,7 +21,7 @@ const BidIndexModel = (props) => {
      const [createModalShow, setCreateModalShow] = useState(false)
      const [updated, setUpdated] = useState(false)
      const [error, setError] = useState(false)
-     const [accepted, setAccepted] = useState(false)
+     // const [accepted, setAccepted] = useState(false)
 
      const { user, job, msgAlert, show, handleClose, addBidForm, editOneJob } = props
      // const [job, setJob] = useState(props.job)
@@ -56,12 +56,12 @@ const BidIndexModel = (props) => {
           return null
      }
 
-     const acceptButton = (<>
-          {job.owner === user.id ?
-               <button onClick={() => setAccepted(true)} > Accept </button>
-               :
-               null}
-     </>)
+     // const acceptButton = (<>
+     //      {job.owner === user.id ?
+     //           <button onClick={() => setAccepted(true)} > Accept </button>
+     //           :
+     //           null}
+     // </>)
 
      // if (accepted) {
      //      console.log("can_bid status", job.can_bid)
@@ -100,7 +100,7 @@ const BidIndexModel = (props) => {
                     <Card.Text>
                          {bid.description} <br />
                          contract Id: {bid.contract_ref}
-                         <p>{acceptButton}</p>
+                         {/* <p>{acceptButton}</p> */}
                     </Card.Text>
                </Card.Body>
           </Card>

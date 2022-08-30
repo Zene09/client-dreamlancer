@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react"
 import LoadingScreen from '../shared/LoadingScreen'
-import {getAllJobs} from '../../api/jobs'
+import { getAllJobs } from '../../api/jobs'
 import Card from 'react-bootstrap/Card'
 import { useNavigate, Link } from 'react-router-dom'
 import messages from '../shared/AutoDismissAlert/messages'
 import BidIndexModel from '../bids/BidIndexModel'
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
 
 // style for our card container
 const cardContainerStyle = {
@@ -18,13 +20,15 @@ const viewBidsStyle = {
      display: 'flex',
      justifyContent: 'right'
 }
- 
+
 const JobsIndex = (props) => {
      const navigate = useNavigate()
      const [jobs, setJobs] = useState(null)
      const [clickedJob, setClickedJob]  = useState(null)
      const [bidModalShow, setBidModalShow] = useState(false)
      const [error, setError] = useState(false)
+     const [show, setShow] = useState(false);
+     // const [accepted, setAccepted] = useState(false)
 
     const { user, msgAlert } = props
     console.log('Props in JobsIndex', props)
@@ -53,6 +57,28 @@ const JobsIndex = (props) => {
      } else if (jobs.length === 0) {
           return <p>No jobs yet.</p>
      }
+     
+               // acceptOneBid(user, job)
+               // .then(() =>
+               //      msgAlert({
+               //           heading: 'Sign In Success',
+               //           message: messages.closeBidSuccess,
+               //           variant: 'success',
+               //      })
+               // )
+               // .then(() => navigate('/'))
+                         // .then((res) => {
+                         //      navigate(`/jobs/${res.data.contract.id}`, { replace: true })
+                         // })
+
+     // }
+
+     if (show) {
+          return <Alert variant="success" onClose={() => setShow(false)} dismissible>
+               <Alert.Heading>Bid is Closed!</Alert.Heading>
+               <p> Check Production status </p>
+          </Alert>
+     }
 
      const jobCards = jobs.map((job) => (
           <Card style={{ width: '30%', margin: 5}} key={ job._id }>
@@ -66,7 +92,11 @@ const JobsIndex = (props) => {
                     <button style={viewBidsStyle} onClick={() => {
                          setBidModalShow(true)
                          setClickedJob(job)     
-                    }}>How Current Bids</button>
+                         }}>Show Current Bids</button>
+                         {job.owner === user.id ?
+                              <button onClick={() => setShow(true)}>Close Bid</button>
+                              :
+                              null}
                 </Card.Text>
             </Card.Body>
         </Card>

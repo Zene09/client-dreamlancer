@@ -23,6 +23,7 @@ const messages = {
 	updateBidFailure: 'Couldn\'t update Bid, please try again.',
 	removeBidSuccess: 'Bid has been destroyed!',
 	removeBidFailure: 'Couldn\'t remove Bid, please try again.',
+	closeBidSuccess: 'Check Production status'
 }
 
 module.exports = messages
