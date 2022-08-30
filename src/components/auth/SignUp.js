@@ -115,7 +115,7 @@ const SignUp = (props) => {
                             onChange={e => setIsDev(e.target.checked)}
                         />
                     </Form.Group>
-                    <Button style={ submitButton } type="submit" class="btn btn-outline-dark">
+                    <Button style={ submitButton } type="submit" variant='outline-dark'>
                         Submit
                     </Button>
                 </Form>

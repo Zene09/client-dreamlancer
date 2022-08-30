@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card'
 import { useNavigate, Link } from 'react-router-dom'
 import messages from '../shared/AutoDismissAlert/messages'
 import BidIndexModel from '../bids/BidIndexModel'
+import { submitButton, showButton, pageStyle } from "../shared/Styling"
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 
@@ -82,19 +83,19 @@ const JobsIndex = (props) => {
 
      const jobCards = jobs.map((job) => (
           <Card style={{ width: '30%', margin: 5}} key={ job._id }>
-            <Card.Header>{ job.title } - { job.owner }</Card.Header>
-            <Card.Body>
+            <Card.Header style={{backgroundColor: '#F4A460', fontFamily: 'Play'}}>{ job.title } - { job.owner }</Card.Header>
+            <Card.Body style={ pageStyle }>
                 <Card.Text>
                     <Link to={`/jobs/${job.id}`}>
                          { job.description }
                     </Link>
                     <br />
-                    <button class='btn btn-outline-dark'style={viewBidsStyle} onClick={() => {
+                    <button class="btn btn-outline-light" style={ showButton } onClick={() => {
                          setBidModalShow(true)
                          setClickedJob(job)     
                          }}>Show Current Bids</button>
                          {job.owner === user.id ?
-                              <button onClick={() => setShow(true)}>Close Bid</button>
+                              <button class="btn btn-outline-dark" style={ submitButton } onClick={() => setShow(true)}>Close Bid</button>
                               :
                               null}
 
