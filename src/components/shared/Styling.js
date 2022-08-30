@@ -14,24 +14,28 @@ fontFamily: 'Play, sans-serif'
 // class="btn btn-outline-dark"
 // class="btn btn-outline-light"
 const submitButton = {
+    fontFamily: 'Play',
     backgroundColor: '#B9CEA1',
     margin: '5px'
 }
 export { submitButton }
 
 const showButton = {
+    fontFamily: 'Play',
     backgroundColor: '#BA5624',
     margin: '5px'
 }
 export { showButton }
 
 const destroyButton = {
+    fontFamily: 'Play',
     backgroundColor: '#B22206',
     margin: '5px'
 }
 export { destroyButton }
 
 const warningButton = {
+    fontFamily: 'Play',
     backgroundColor: '#BA5624',
     margin: '5px'
 }

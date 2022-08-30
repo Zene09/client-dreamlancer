@@ -30,13 +30,6 @@ const clientOptions = (
 		</Link>
 	</Nav.Item>
 )
-const devOptions = (
-	<Nav.Item className='m-2'>
-		<Link to="/mybids" style={linkStyle}>
-			{/* My Bids */}
-		</Link>
-	</Nav.Item>
-)
 
 const unauthenticatedOptions = (
 	<>
@@ -64,6 +57,14 @@ const alwaysOptions = (
 	</>
 )
 
+const devOptions = (
+	<Nav.Item className='m-2'>
+		<Link to="/mybids" style={linkStyle}>
+			{/* My Bids */}
+		</Link>
+	</Nav.Item>
+)
+
 const nothing = (<></>)
 
 const Header = ({ user }) => (
@@ -80,12 +81,12 @@ const Header = ({ user }) => (
 					<span className='navbar-text mr-2'>Welcome, {user.name}</span>
 				)}
 				{alwaysOptions}
-				{user && user.is_dev === true ?
-					devOptions :
-					nothing}
 				{user && user.is_dev === false ?
 					clientOptions :
 					nothing}
+				{/* {user && user.is_dev === true ?
+					devOptions :
+					nothing} */}
 				{user ?
 					authenticatedOptions : unauthenticatedOptions}
 			</Nav>

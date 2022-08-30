@@ -53,7 +53,7 @@ const ShowJob = (props) => {
     return (
         <Container className="fluid">
             <Card>
-                <Card.Header>{ job.title }</Card.Header>
+                <Card.Header style={pageStyle}>{ job.title }</Card.Header>
                 <Card.Body style={ pageStyle }>
                     <Card.Text>
                         <div><small>Owner ID: { job.owner }</small></div>
@@ -85,13 +85,13 @@ const ShowJob = (props) => {
 
                 {user.is_dev === true ?
                 <>
-                    <button onClick={()=> {
+                    <button class="btn btn-outline-light" style={showButton} onClick={()=> {
                         setBidModalShow(true)
                         setAddBidForm(false)
                         setClickedJob(job)}}
                     >See Bids Already Made
                     </button>
-                    <button onClick={()=> {
+                    <button class="btn btn-outline-light" style={destroyButton} onClick={()=> {
                         setBidModalShow(true)
                         setAddBidForm(true)
                         setClickedJob(job)}}
