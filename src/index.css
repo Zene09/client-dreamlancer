@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.home {
+  font-family: 'Play', sans-serif;
+  border: 5px;
+  text-align: center;
+}
+
+.row {
+  border-style: double;
+  border-radius: 5px;
+}
+
+p {
+  font-family: 'Play', sans-serif;
+  text-align: center;
+}
+
+footer {
+  font-family: 'Play', sans-serif;
+  text-align: center;
+}

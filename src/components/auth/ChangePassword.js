@@ -6,6 +6,7 @@ import messages from '../shared/AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { submitButton, pageStyle } from '../shared/Styling'
 
 const ChangePassword = (props) => {
 	// constructor(props) {
@@ -53,7 +54,7 @@ const ChangePassword = (props) => {
 
 
     return (
-        <div className='row'>
+        <div style={pageStyle} className='row'>
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
                 <h3>Change Password</h3>
                 <Form onSubmit={onChangePassword}>
@@ -79,7 +80,7 @@ const ChangePassword = (props) => {
                             onChange={e => setNewPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
+                    <Button style={ submitButton } type="submit" class="btn btn-outline-dark">
                         Submit
                     </Button>
                 </Form>

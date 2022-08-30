@@ -4,7 +4,8 @@ import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 
 const linkStyle = {
-	color: 'white',
+	color: '#FEF8EB',
+	fontFamily: 'Play',
 	textDecoration: 'none'
 }
 const authenticatedOptions = (
@@ -25,13 +26,13 @@ const authenticatedOptions = (
 const clientOptions = (
 	<Nav.Item className='m-2'>
 		<Link to="/addJob" style={linkStyle}>
-			Add a Job!
+			Post A Job
 		</Link>
 	</Nav.Item>
 )
 const devOptions = (
 	<Nav.Item className='m-2'>
-		<Link to="/bets" style={linkStyle}>
+		<Link to="/mybids" style={linkStyle}>
 			My Bids
 		</Link>
 	</Nav.Item>
@@ -66,7 +67,7 @@ const alwaysOptions = (
 const nothing = (<></>)
 
 const Header = ({ user }) => (
-	<Navbar bg='secondary' variant='dark' expand='md'>
+	<Navbar sticky='top' style={{ backgroundColor: '#381D2A' }} variant='dark' expand='md'>
 		<Navbar.Brand>
 			<Link to='/' style={linkStyle}>
 				DreamLancer
@@ -76,7 +77,7 @@ const Header = ({ user }) => (
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
 				{user && (
-					<span className='navbar-text mr-2'>Welcome, {user.token}</span>
+					<span className='navbar-text mr-2'>Welcome, {user.name}</span>
 				)}
 				{alwaysOptions}
 				{user && user.is_dev === true ?

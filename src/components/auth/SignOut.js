@@ -4,6 +4,7 @@ import {Button, ButtonGroup} from 'react-bootstrap'
 
 import { signOut } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
+import { destroyButton, warningButton, pageStyle } from '../shared/Styling'
 
 const SignOut = (props) => {
 	const { msgAlert, clearUser, user } = props
@@ -30,15 +31,15 @@ const SignOut = (props) => {
 
 	return (
 		<>
-            <div className='row'>
+            <div  style={pageStyle} className='row'>
                 <div className='col-sm-10 col-md-8 mx-auto mt-5'>
                     <h2>Are you sure you want to sign out?</h2>
                     <small>We hate to see you go...</small><br/>
                     <ButtonGroup>
-                        <Button variant='danger' onClick={onSignOut}>
+                        <Button style={ destroyButton } class="btn btn-outline-dark" onClick={onSignOut}>
                             Sign Out
                         </Button>
-                        <Button variant='warning' onClick={onCancel}>
+                        <Button style={ warningButton } class="btn btn-outline-dark" onClick={onCancel}>
                             Cancel
                         </Button>
                     </ButtonGroup>
