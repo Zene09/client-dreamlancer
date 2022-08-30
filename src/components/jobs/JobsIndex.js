@@ -89,7 +89,7 @@ const JobsIndex = (props) => {
                          { job.description }
                     </Link>
                     <br />
-                    <button style={viewBidsStyle} onClick={() => {
+                    <button class='btn btn-outline-dark'style={viewBidsStyle} onClick={() => {
                          setBidModalShow(true)
                          setClickedJob(job)     
                          }}>Show Current Bids</button>
@@ -97,6 +97,7 @@ const JobsIndex = (props) => {
                               <button onClick={() => setShow(true)}>Close Bid</button>
                               :
                               null}
+
                 </Card.Text>
             </Card.Body>
         </Card>
