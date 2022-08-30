@@ -55,3 +55,12 @@ export const editOneJob = (job, user) => {
         headers: { Authorization: `Token ${user.token}` }
       })
 }
+
+export const acceptOneBid = (job, user) => {
+  return axios({
+    method: 'PATCH',
+    url: `${apiUrl}/contracts/${job.id}/`,
+    data: { contract: job },
+    headers: { Authorization: `Token ${user.token}` }
+  })
+}
