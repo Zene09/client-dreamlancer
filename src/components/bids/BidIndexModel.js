@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react"
-import LoadingScreen from '../shared/LoadingScreen'
 import { getAllBids } from '../../api/bids'
 import Card from 'react-bootstrap/Card'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import messages from '../shared/AutoDismissAlert/messages'
 import { Modal } from 'react-bootstrap'
 import CreateBidModel from './CreateBidModel'
 import { editOneJob } from '../../api/jobs'
 import { createOneContractBid } from '../../api/jobBids'
-import { pageStyle, showButton, submitButton, cardHeader } from '../shared/Styling'
+import { pageStyle, submitButton, cardHeader } from '../shared/Styling'
+// sowButton is still here comment out. removed import {showButton} from '../shared/Styling' to remove React worning. 
 // style for our card container
 const cardContainerStyle = {
      display: 'flex',
