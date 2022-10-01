@@ -1,11 +1,9 @@
 import { useState } from 'react'
 import { createOneBid } from './../../api/bids'
-import { useNavigate } from 'react-router-dom'
 import BidForm from '../shared/BidForm'
 
 
 const CreateBidModel = (props) => {
-     const navigate = useNavigate()
      const {
           user, job, show, handleClose, msgAlert, triggerRefresh
      } = props
@@ -35,7 +33,7 @@ const CreateBidModel = (props) => {
 
      const handleSubmit = (e) => {
           e.preventDefault()
-          createOneBid(bid, props.user)
+          createOneBid(bid, user)
                .then(() => triggerRefresh())
                .then(() => handleClose())
                .then(() => {

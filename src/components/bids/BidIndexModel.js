@@ -22,7 +22,7 @@ const BidIndexModel = (props) => {
      const [createModalShow, setCreateModalShow] = useState(false)
      const [updated, setUpdated] = useState(false)
      const [error, setError] = useState(false)
-     const [accepted, setAccepted] = useState(false)
+     // const [accepted, setAccepted] = useState(false)
 
      const { user, msgAlert, job, show, handleClose, addBidForm } = props
      // const [jobn, setJobn] = useState({...job})
@@ -93,8 +93,6 @@ const BidIndexModel = (props) => {
      //           null}
      // </>)
 
-
-
      const bidCards = bids.map((bid) => (
           <Card style={{ width: '30%', margin: 5 }} key={bid._id}>
                <Card.Header style={ cardHeader }>${bid.bid_amount} - Owner: {bid.owner}</Card.Header>
@@ -145,7 +143,6 @@ const BidIndexModel = (props) => {
                               {clientBidCards}
                          </div>
                     }
-
 
                     {addBidForm === true ?
                          <>
