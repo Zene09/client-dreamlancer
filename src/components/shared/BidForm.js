@@ -1,5 +1,5 @@
 import { Form, Button,  } from 'react-bootstrap'
-import { submitButton, pageStyle, cardHeader } from './Styling'
+import { submitButton, pageStyle } from './Styling'
  
 const BidForm = (props) => {
     console.log('BidForm props: ', props)
