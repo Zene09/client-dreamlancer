@@ -36,6 +36,8 @@ const BidIndexModel = (props) => {
           if (!job) { return null }
           getAllBids(user, job)
                .then(res => {
+                    // If we use ===, it will give a false when it should be true because the types are not the same.
+                    // eslint-disable-next-line
                     const conBids = res.data.bids.filter(bid => (bid.contract_ref == job.id))
                     console.log(conBids)
                     setBids(conBids)
