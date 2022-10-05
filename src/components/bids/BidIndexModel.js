@@ -50,7 +50,7 @@ const BidIndexModel = (props) => {
                     })
                     setError(true)
                })
-     }, [show, updated])
+     }, [show, updated, job, msgAlert, navigate, user])
 
      if (error) {
           return <p>Error!</p>

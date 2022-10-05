@@ -34,7 +34,7 @@ const ShowJob = (props) => {
                })
                navigate('/')
            })
-    }, [updated])
+    }, [updated, id, msgAlert, navigate, user])
 
     const deleteThis = () => {
         console.log('id: ',id)

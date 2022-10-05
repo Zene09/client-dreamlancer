@@ -46,7 +46,7 @@ const MyBidsIndex = (props) => {
                 })
                 setError(true)
             })
-    }, [])
+    })
 
     if (error) {
         return <p>There an Error! Figure it out!</p>

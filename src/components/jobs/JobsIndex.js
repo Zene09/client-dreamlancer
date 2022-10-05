@@ -47,7 +47,7 @@ const JobsIndex = (props) => {
                     })
                     setError(true)
                 })
-     },[])
+     })
 
      if (error) {
           return <p>Error!</p>
