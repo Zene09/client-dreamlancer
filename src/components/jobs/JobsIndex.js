@@ -7,7 +7,6 @@ import messages from '../shared/AutoDismissAlert/messages'
 import BidIndexModel from '../bids/BidIndexModel'
 import { submitButton, showButton, pageStyle } from "../shared/Styling"
 import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
 
 // style for our card container
 const cardContainerStyle = {
@@ -17,10 +16,10 @@ const cardContainerStyle = {
  }
 
  // View all jobs Buttons
-const viewBidsStyle = {
-     display: 'flex',
-     justifyContent: 'right'
-}
+// const viewBidsStyle = {
+//      display: 'flex',
+//      justifyContent: 'right'
+// }
 
 const JobsIndex = (props) => {
      const navigate = useNavigate()
@@ -48,7 +47,7 @@ const JobsIndex = (props) => {
                     })
                     setError(true)
                 })
-     },[])
+     })
 
      if (error) {
           return <p>Error!</p>

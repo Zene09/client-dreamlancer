@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import LoadingScreen from '../shared/LoadingScreen'
 import { getAllContractBid } from '../../api/jobBids'
 import Card from 'react-bootstrap/Card'
-import { useNavigate } from 'react-router-dom'
 import messages from '../shared/AutoDismissAlert/messages'
 // import BidIndexModel from '../bids/BidIndexModel'
 
@@ -14,13 +13,12 @@ const cardContainerStyle = {
 }
 
 // // View all jobs Buttons
-const viewBidsStyle = {
-    display: 'flex',
-    justifyContent: 'right'
-}
+// const viewBidsStyle = {
+//     display: 'flex',
+//     justifyContent: 'right'
+// }
 
 const MyBidsIndex = (props) => {
-    const navigate = useNavigate()
     const [contract_bids, setContract_bids] = useState(null)
     const [error, setError] = useState(false)
 
@@ -33,7 +31,7 @@ const MyBidsIndex = (props) => {
         getAllContractBid(user)
             .then(res => {
                console.table(res.data.contract_data[0])
-                const conBids = res.data.contract_data.filter(contract_bid => (contract_bid.contract.owner == user.id))
+                const conBids = res.data.contract_data.filter(contract_bid => (contract_bid.contract.owner === user.id))
                 console.log(conBids)
                 console.table(conBids)
                 console.table(conBids.contract)
@@ -46,9 +44,9 @@ const MyBidsIndex = (props) => {
                     message: messages.getJobsFailure,
                     variant: 'danger',
                 })
-               //  setError(true)
+                setError(true)
             })
-    }, [])
+    })
 
     if (error) {
         return <p>There an Error! Figure it out!</p>

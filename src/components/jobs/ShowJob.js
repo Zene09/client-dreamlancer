@@ -1,6 +1,6 @@
 import { useState, useEffect,  } from 'react'
 import { destroyOneJob } from './../../api/jobs'
-import { useParams, Link, useNavigate } from 'react-router-dom' 
+import { useParams, useNavigate } from 'react-router-dom' 
 import LoadingScreen from '../shared/LoadingScreen'
 import { getOneJob, editOneJob } from '../../api/jobs'
 import messages from '../shared/AutoDismissAlert/messages'
@@ -34,7 +34,7 @@ const ShowJob = (props) => {
                })
                navigate('/')
            })
-    }, [updated])
+    }, [updated, id, msgAlert, navigate, user])
 
     const deleteThis = () => {
         console.log('id: ',id)

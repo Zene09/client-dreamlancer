@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react"
-import LoadingScreen from '../shared/LoadingScreen'
 import { getAllBids } from '../../api/bids'
 import Card from 'react-bootstrap/Card'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import messages from '../shared/AutoDismissAlert/messages'
 import { Modal } from 'react-bootstrap'
 import CreateBidModel from './CreateBidModel'
 import { editOneJob } from '../../api/jobs'
 import { createOneContractBid } from '../../api/jobBids'
-import { pageStyle, showButton, submitButton, cardHeader } from '../shared/Styling'
+import { pageStyle, submitButton, cardHeader } from '../shared/Styling'
+// sowButton is still here comment out. removed import {showButton} from '../shared/Styling' to remove React worning. 
 // style for our card container
 const cardContainerStyle = {
      display: 'flex',
@@ -22,7 +22,7 @@ const BidIndexModel = (props) => {
      const [createModalShow, setCreateModalShow] = useState(false)
      const [updated, setUpdated] = useState(false)
      const [error, setError] = useState(false)
-     const [accepted, setAccepted] = useState(false)
+     // const [accepted, setAccepted] = useState(false)
 
      const { user, msgAlert, job, show, handleClose, addBidForm } = props
      // const [jobn, setJobn] = useState({...job})
@@ -36,6 +36,8 @@ const BidIndexModel = (props) => {
           if (!job) { return null }
           getAllBids(user, job)
                .then(res => {
+                    // If we use ===, it will give a false when it should be true because the types are not the same.
+                    // eslint-disable-next-line
                     const conBids = res.data.bids.filter(bid => (bid.contract_ref == job.id))
                     console.log(conBids)
                     setBids(conBids)
@@ -48,7 +50,7 @@ const BidIndexModel = (props) => {
                     })
                     setError(true)
                })
-     }, [show, updated])
+     }, [show, updated, job, msgAlert, navigate, user])
 
      if (error) {
           return <p>Error!</p>
@@ -92,8 +94,6 @@ const BidIndexModel = (props) => {
      //           :
      //           null}
      // </>)
-
-
 
      const bidCards = bids.map((bid) => (
           <Card style={{ width: '30%', margin: 5 }} key={bid._id}>
@@ -145,7 +145,6 @@ const BidIndexModel = (props) => {
                               {clientBidCards}
                          </div>
                     }
-
 
                     {addBidForm === true ?
                          <>
